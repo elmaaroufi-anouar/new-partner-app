@@ -18,6 +18,7 @@ import com.done.partner.presentation.order_list.OrderListAction
 import com.done.partner.presentation.order_list.OrderListState
 import com.done.partner.domain.models.orders.status.OrderStatus
 import com.done.core.presentation.core.ui.theme.doneBackgroundOrange
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalFoundationApi::class)
 fun LazyListScope.DeliverdAndCancelledOrders(

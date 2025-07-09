@@ -34,6 +34,7 @@ import com.done.partner.domain.models.product.product_option.ProductOptionGroup
 import com.done.partner.presentation.store.product_detail.OptionGroupState
 import com.done.partner.presentation.store.product_detail.SelectionType
 import com.done.partner.presentation.store.component.QuantityButton
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 

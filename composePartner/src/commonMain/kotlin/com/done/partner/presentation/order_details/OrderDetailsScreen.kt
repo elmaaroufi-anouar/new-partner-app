@@ -86,6 +86,7 @@ import com.done.partner.presentation.core.components.ScreenShootTicket
 import com.done.partner.presentation.core.components.createBitmapBytesFromPicture
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel

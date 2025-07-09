@@ -28,6 +28,7 @@ import androidx.compose.ui.window.DialogProperties
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.design_system.DoneTextField
 import com.done.partner.R
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun DeliveryCodeDialog(

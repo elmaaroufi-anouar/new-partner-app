@@ -32,6 +32,8 @@ import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.ui.theme.doneGreen
 import com.done.core.presentation.core.ui.theme.doneOrange
 import com.done.partner.presentation.order_list.OrderListAction
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ReadyOrderItem(

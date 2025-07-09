@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.done.partner.R
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun DisableOptionsFab(

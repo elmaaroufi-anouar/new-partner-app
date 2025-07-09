@@ -54,7 +54,9 @@ import com.done.partner.presentation.store.store_detail.component.ProductInlineI
 import com.done.partner.presentation.store.store_detail.component.ShadowDivider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun StoreDetailScreenRoot(

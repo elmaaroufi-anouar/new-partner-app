@@ -41,6 +41,8 @@ import com.done.core.presentation.core.ui.theme.doneOrange
 import com.done.partner.R
 import com.done.partner.presentation.order_list.OrderListAction
 import com.done.partner.presentation.order_list.OrderListState
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 fun LazyListScope.PendingOrders(
     orders: List<Order>,

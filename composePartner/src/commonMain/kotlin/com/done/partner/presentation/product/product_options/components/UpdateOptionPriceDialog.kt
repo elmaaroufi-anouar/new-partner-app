@@ -31,6 +31,7 @@ import com.done.partner.R
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.design_system.DoneTextField
 import com.done.partner.presentation.product.product_options.ProductOptionsState
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun UpdateOptionPriceDialog(

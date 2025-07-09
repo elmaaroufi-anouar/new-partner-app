@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.dp
 import com.done.partner.domain.models.orders.Order
 import com.done.partner.R
 import com.done.partner.presentation.order_list.OrderListAction
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 fun LazyListScope.ReadyToPickupOrders(
     orders: List<Order>,

@@ -39,6 +39,7 @@ import com.done.partner.presentation.settings.SettingsActions
 import com.done.partner.presentation.settings.SettingsState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable

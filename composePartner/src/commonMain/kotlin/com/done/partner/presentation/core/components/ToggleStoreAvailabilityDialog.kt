@@ -27,6 +27,8 @@ import androidx.compose.ui.window.DialogProperties
 import com.done.partner.R
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.ui.theme.DoneTheme
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ToggleStoreAvailabilityDialog(

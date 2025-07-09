@@ -32,6 +32,8 @@ import com.done.core.domain.models.language.Language
 import com.done.partner.R
 import com.done.partner.presentation.settings.SettingsActions
 import com.done.partner.presentation.settings.SettingsState
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable

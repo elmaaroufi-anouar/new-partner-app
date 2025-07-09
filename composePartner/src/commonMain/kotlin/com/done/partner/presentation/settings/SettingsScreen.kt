@@ -39,8 +39,11 @@ import com.done.partner.domain.util.PrinterType
 import com.done.partner.presentation.core.components.ScreenShootTicket
 import com.done.partner.presentation.settings.components.LanguageDropDownMenu
 import com.done.partner.presentation.settings.components.PrinterSettingsDialog
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun SettingsScreenCore(

@@ -1,0 +1,253 @@
+[versions]
+# Android SDK
+android-compileSdk = "35"
+android-minSdk = "24"
+android-targetSdk = "35"
+
+# Gradle Plugins
+agp = "8.9.3"
+kotlin = "2.2.0"
+ksp = "1.9.22-1.0.17"
+googleService = "4.4.2"
+firebase-crashlytics = "3.0.3"
+
+# AndroidX Core
+androidx-core = "1.16.0"
+coreKtx = "1.16.0"
+core = "1.5.0"
+coreSplashscreen = "1.0.1"
+
+# AndroidX UI
+androidx-appcompat = "1.7.1"
+androidx-constraintlayout = "2.2.1"
+androidx-activity = "1.10.1"
+activityCompose = "1.10.1"
+
+# AndroidX Lifecycle
+androidx-lifecycle = "2.9.1"
+lifecycleRuntimeKtx = "2.9.0"
+
+# Compose
+composeBom = "2025.05.00"
+composeMultiplatform = "1.8.2"
+composeHotReload = "1.0.0-alpha11"
+navigationCompose = "2.9.0"
+materialIconsExtended = "1.7.8"
+material3Android = "1.3.2"
+
+# Kotlin
+kotlinStdlib = "2.2.0"
+kotlinx-coroutines = "1.10.2"
+kotlinxSerializationJson = "1.8.0"
+
+# Koin
+koin = "4.0.0"
+
+# Ktor
+ktor = "3.0.3"
+
+# Testing
+junit = "4.13.2"
+androidx-testExt = "1.2.1"
+androidx-espresso = "3.6.1"
+runner = "1.5.2"
+testCore = "1.6.1"
+testCoreKtx = "1.6.1"
+coreTesting = "2.2.0"
+extJunit = "1.2.1"
+kotlinxCoroutinesTest = "1.5.1"
+assertk = "0.28.1"
+turbine = "1.2.0"
+coroutines-test = "1.10.2"
+
+# Firebase
+firebaseBom = "33.13.0"
+
+# Permissions
+moko = "0.18.1"
+
+# Utilities
+androidTools = "31.7.1"
+datastorePreferences = "1.1.4"
+coilCompose = "2.7.0"
+printerx = "1.0.17"
+pushy = "1.0.121"
+konnectivity = "0.1-alpha01"
+
+# Datetime
+kotlinx-datetime = "0.7.0"
+
+[libraries]
+# Kotlin
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
+kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+# AndroidX Core
+androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "datastorePreferences" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+
+# AndroidX UI
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
+
+# AndroidX Lifecycle
+androidx-lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtimeCompose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+
+# Compose
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
+
+# Koin
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
+
+# Ktor
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+
+# Testing
+junit = { module = "junit:junit", version.ref = "junit" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+androidx-testExt-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-testExt" }
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-espresso" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+assertk = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assertk" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines-test" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
+koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "extJunit" }
+androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+core-ktx = { module = "androidx.test:core-ktx", version.ref = "testCoreKtx" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+
+# Firebase
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-config = { module = "com.google.firebase:firebase-config" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-messaging-ktx = { module = "com.google.firebase:firebase-messaging-ktx" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+
+# Permissions
+moko-permissions = { module = "dev.icerock.moko:permissions", version.ref = "moko" }
+moko-permissions-compose = { module = "dev.icerock.moko:permissions-compose", version.ref = "moko" }
+
+# Utilities
+printerx = { module = "com.sunmi:printerx", version.ref = "printerx" }
+pushy = { module = "me.pushy:sdk", version.ref = "pushy" }
+konnectivity = { module = "com.plusmobileapps:konnectivity", version.ref = "konnectivity" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+
+# Datetime
+jetbrains-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+
+# Gradle Plugins
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+
+[plugins]
+# Application/Library Plugins
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+
+# Compose Plugins
+composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "composeHotReload" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Firebase Plugins
+google-services = { id = "com.google.gms.google-services", version.ref = "googleService" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
+
+# Other Plugins
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+partner-android-application = { id = "partner.android.application", version = "unspecified" }
+partner-android-library = { id = "partner.android.library", version = "unspecified" }
+
+[bundles]
+# UI Bundles
+compose = [
+    "androidx-activity-compose",
+    "androidx-core-ktx",
+    "androidx-lifecycle-runtime-ktx",
+    "androidx-compose-bom",
+    "androidx-ui",
+    "androidx-ui-graphics",
+    "androidx-ui-tooling",
+    "androidx-material3"
+]
+
+# DI Bundles
+koin = [
+    "koin-core",
+    "koin-compose",
+    "koin-compose-viewmodel"
+]
+
+# Networking Bundles
+ktor = [
+    "ktor-client-content-negotiation",
+    "ktor-client-core",
+    "ktor-client-serialization-json",
+    "ktor-client-logging",
+]
+
+# Testing Bundles
+local-tests = [
+    "turbine",
+    "assertk",
+    "androidx-junit",
+    "coroutines-test",
+    "androidx-core-testing",
+    "core-ktx",
+    "androidx-runner",
+    "kotlinx-coroutines-test",
+    "koin-test-junit4",
+    "koin-test",
+    "ktor-client-mock"
+]
+
+instrumented-tests = [
+    "turbine",
+    "assertk",
+    "androidx-junit",
+    "coroutines-test",
+    "androidx-ui-test-junit4",
+    "androidx-core-testing",
+    "core-ktx",
+    "androidx-runner",
+    "kotlinx-coroutines-test",
+    "androidx-espresso-core",
+    "koin-test-junit4",
+    "koin-test",
+    "ktor-client-mock"
+]

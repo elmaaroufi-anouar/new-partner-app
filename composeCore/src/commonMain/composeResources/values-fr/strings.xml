@@ -1,0 +1,4 @@
+<resources>
+    <string name="something_went_wrong">Une erreur s\'est produite</string>
+    <string name="make_sure_you_have_a_valid_internet_connection">Assurez-vous d\'avoir une connexion Internet valide</string>
+</resources>

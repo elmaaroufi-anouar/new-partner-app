@@ -1,0 +1,4 @@
+<resources>
+    <string name="something_went_wrong">حدث خطأ ما</string>
+    <string name="make_sure_you_have_a_valid_internet_connection">تأكد من أن لديك اتصال بالإنترنت</string>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Done Partner</string>
+
+    <string name="orders">Orders</string>
+    <string name="products">Products</string>
+    <string name="settings">Settings</string>
+    <string name="reports">Reports</string>
+
+    <string name="default_notification">Default notification</string>
+    <string name="info_notification">Info notification</string>
+    <string name="success_notification">Success notification</string>
+    <string name="alert_notification">Alert notification</string>
+    <string name="rejected_notification">Rejected notification</string>
+    <string name="backup_notification">Backup notification</string>
+</resources>

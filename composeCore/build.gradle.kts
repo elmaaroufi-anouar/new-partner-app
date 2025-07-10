@@ -15,15 +15,6 @@ kotlin {
         namespace = "com.done.core"
         compileSdk = 35
         minSdk = 24
-
-        withHostTestBuilder {
-        }
-
-        withDeviceTestBuilder {
-            sourceSetTreeName = "test"
-        }.configure {
-            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
     }
 
 // For iOS targets, this is also where you should
@@ -111,6 +102,9 @@ kotlin {
                 // Kotlin
                 implementation(libs.kotlin.stdlib)
 
+                api(libs.androidx.core.ktx)
+                api(libs.androidx.lifecycle.runtime.ktx)
+
                 // Firebase
                 api(project.dependencies.platform(libs.firebase.bom))
                 api(libs.firebase.messaging.ktx)
@@ -131,14 +125,6 @@ kotlin {
 
                 // Serialization
                 api(libs.kotlinx.serialization.json)
-            }
-        }
-
-        getByName("androidDeviceTest") {
-            dependencies {
-                implementation(libs.androidx.runner)
-                implementation(libs.androidx.core)
-                implementation(libs.androidx.testExt.junit)
             }
         }
 

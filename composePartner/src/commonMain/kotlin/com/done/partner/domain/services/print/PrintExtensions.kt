@@ -1,9 +1,11 @@
 package com.done.partner.domain.services.print
 
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.Locale
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Clock
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 fun String.wrapText(maxCharsPerLine: Int = 32): List<String> {
     val words = this.split(" ")
@@ -23,15 +25,18 @@ fun String.wrapText(maxCharsPerLine: Int = 32): List<String> {
     return lines
 }
 
+@OptIn(ExperimentalTime::class)
 fun Double.getTimeAfterMinutes(): String {
-    val calendar = Calendar.getInstance()
-    calendar.add(Calendar.MINUTE, this.toInt())
-    val formatter = SimpleDateFormat("HH:mm", Locale.US)
-    return formatter.format(calendar.time)
+    val now = Clock.System.now()
+    val future = now.plus(this.toLong().minutes)
+    val local = future.toLocalDateTime(TimeZone.currentSystemDefault())
+    return "${local.hour.toString().padStart(2, '0')}:${local.minute.toString().padStart(2, '0')}"
 }
 
+@OptIn(ExperimentalTime::class)
 fun Long.formatDate(): String {
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.US)
-    val date = Date(this)
-    return dateFormat.format(date)
+    val instant = Instant.fromEpochMilliseconds(this)
+    val local = instant.toLocalDateTime(TimeZone.currentSystemDefault())
+    return "${local.year.toString().padStart(4, '0')}-${local.monthNumber.toString().padStart(2, '0')}-${local.dayOfMonth.toString().padStart(2, '0')} " +
+            "${local.hour.toString().padStart(2, '0')}:${local.minute.toString().padStart(2, '0')}"
 }

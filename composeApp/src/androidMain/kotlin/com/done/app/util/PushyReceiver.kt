@@ -14,12 +14,14 @@ import androidx.core.app.TaskStackBuilder
 import androidx.core.net.toUri
 import com.done.app.App
 import com.done.app.MainActivity
+import com.done.app.PartnerApplication
 import com.done.core.data.util.ApiRoutes
 import com.done.core.data.util.jsonWithUnknownKeys
 import com.done.partner.data.dto.status.StatusDto
 import com.done.core.data.services.api.KtorApiService
 import com.done.core.domain.models.notification.OrderNotification
 import com.done.partner.R
+import com.done.partner.domain.DEEPLINK_BASE_PATH
 import com.done.partner.domain.util.OrderNotificationsSender
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -104,7 +106,7 @@ class PushReceiver : BroadcastReceiver(), KoinComponent {
         val activityIntent = Intent(context, MainActivity::class.java).apply {
             val linkOrderId = notificationData.orderId
             val linkOrderStatus = notificationData.status
-            data = "${App.DEEPLINK_BASE_PATH}/$linkOrderId/$linkOrderStatus".toUri()
+            data = "${DEEPLINK_BASE_PATH}/$linkOrderId/$linkOrderStatus".toUri()
         }
         val pendingIntent = if (notificationData.orderId?.isNotEmpty() == true) {
             TaskStackBuilder.create(context).run {
@@ -121,7 +123,7 @@ class PushReceiver : BroadcastReceiver(), KoinComponent {
         }
 
         val builder = NotificationCompat
-            .Builder(context, notificationChannel ?: App.DONE_NOTIFICATION_BACKUP_CHANNEL)
+            .Builder(context, notificationChannel ?: PartnerApplication.DONE_NOTIFICATION_BACKUP_CHANNEL)
             .setSmallIcon(R.drawable.logo_letter_primary_color_notif)
             .setContentTitle(notificationTitle)
             .setContentText(notificationBody)

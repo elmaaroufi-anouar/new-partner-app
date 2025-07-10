@@ -17,7 +17,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
+@OptIn(ExperimentalTime::class)
 class CoreViewModel(
     private val authRepository: AuthRepository,
     private val settingsRepository: SettingsRepository,
@@ -31,45 +34,45 @@ class CoreViewModel(
     var state by mutableStateOf(CoreState())
         private set
 
-//    init {
-//        viewModelScope.launch {
-//            val startTime = System.currentTimeMillis()
-//            state = state.copy(isCheckingLogIn = true)
-//            state = state.copy(isLoggedIn = authRepository.isLoggedIn())
-//            state = state.copy(isCheckingLogIn = false)
-//
-//            CoroutineScope(Dispatchers.IO + SupervisorJob()).launch {
-//                async {
-//                    analyticsRepository.setUser()
-//                    notificationService.subscribeToGlobalTopic()
-//                }
-//
-//                async {
-//                    if (state.isLoggedIn == true) {
-//                        settingsRepository.registerDeviceToken()
-//                        val storeId = storeRepository.getStoreId()
-//                        if (storeId != null) {
-//                            settingsRepository.changeLanguage(
-//                                storeId, settingsRepository.getCurrentLanguage().code
-//                            )
-//                        }
-//                    }
-//                }
-//
-//                async {
-//                    trackingRepository.trackOpenAppEvent(
-//                        appStartDuration = (System.currentTimeMillis() - startTime).toString(),
-//                        launchSuccess = state.isLoggedIn.toString(),
-//                        errorCount = "0",
-//                        errorType = ""
-//                    )
-//                }
-//
-//                async {
-//                    val activateFCM = remoteConfigRepository.getConfig()?.partnerAndroidActivateFCM
-//                    state = state.copy(activateFCM = activateFCM)
-//                }
-//            }
-//        }
-//    }
+    init {
+        viewModelScope.launch {
+            val startTime = Clock.System.now().toEpochMilliseconds()
+            state = state.copy(isCheckingLogIn = true)
+            state = state.copy(isLoggedIn = authRepository.isLoggedIn())
+            state = state.copy(isCheckingLogIn = false)
+
+            CoroutineScope(Dispatchers.Default + SupervisorJob()).launch {
+                async {
+                    analyticsRepository.setUser()
+                    notificationService.subscribeToGlobalTopic()
+                }
+
+                async {
+                    if (state.isLoggedIn == true) {
+                        settingsRepository.registerDeviceToken()
+                        val storeId = storeRepository.getStoreId()
+                        if (storeId != null) {
+                            settingsRepository.changeLanguage(
+                                storeId, settingsRepository.getCurrentLanguage().code
+                            )
+                        }
+                    }
+                }
+
+                async {
+                    trackingRepository.trackOpenAppEvent(
+                        appStartDuration = (Clock.System.now().toEpochMilliseconds() - startTime).toString(),
+                        launchSuccess = state.isLoggedIn.toString(),
+                        errorCount = "0",
+                        errorType = ""
+                    )
+                }
+
+                async {
+                    val activateFCM = remoteConfigRepository.getConfig()?.partnerAndroidActivateFCM
+                    state = state.copy(activateFCM = activateFCM)
+                }
+            }
+        }
+    }
 }

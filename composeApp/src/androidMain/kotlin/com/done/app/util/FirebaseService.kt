@@ -16,9 +16,11 @@ import com.done.core.domain.services.secure_storage.SecureStorageService
 import com.done.core.domain.models.notification.OrderNotification
 import com.done.app.App
 import com.done.app.MainActivity
+import com.done.app.PartnerApplication
 import com.done.partner.R
 import com.done.partner.domain.repositories.settings.SettingsRepository
 import com.done.core.domain.services.notifications.DeviceTokenRegisteringService
+import com.done.partner.domain.DEEPLINK_BASE_PATH
 import com.done.partner.domain.util.OrderNotificationsSender
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -109,7 +111,7 @@ class FirebaseService : FirebaseMessagingService() {
             if (orderNotification != null) {
                 val orderId = orderNotification.orderId
                 val orderStatus = orderNotification.status
-                data = "${App.Companion.DEEPLINK_BASE_PATH}/$orderId/$orderStatus".toUri()
+                data = "${DEEPLINK_BASE_PATH}/$orderId/$orderStatus".toUri()
             }
         }
         val pendingIntent = TaskStackBuilder.create(this).run {
@@ -122,7 +124,7 @@ class FirebaseService : FirebaseMessagingService() {
         val messageBody = notification.body
         val messageTitle = notification.title
         val builder = NotificationCompat
-            .Builder(this, notification.channelId ?: App.Companion.DONE_NOTIFICATION_BACKUP_CHANNEL)
+            .Builder(this, notification.channelId ?: PartnerApplication.Companion.DONE_NOTIFICATION_BACKUP_CHANNEL)
             .setSmallIcon(R.drawable.logo_letter_primary_color_notif)
             .setContentTitle(messageBody)
             .setContentText(messageTitle)

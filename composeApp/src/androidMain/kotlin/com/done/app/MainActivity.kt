@@ -11,7 +11,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.done.app.util.BatteryLevelReceiver
 import com.done.core.presentation.core.ui.theme.DoneTheme
 import com.done.partner.data.dto.status.StatusDto
 import kotlinx.serialization.json.Json
@@ -26,6 +25,7 @@ import android.os.Environment
 import android.os.PowerManager
 import android.provider.Settings
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -35,12 +35,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.core.net.toUri
+import com.done.app.util.BatteryLevelReceiver
 import com.done.core.data.services.language.LanguageServiceImpl
 import com.done.core.presentation.core.ui.components.OnResumeCompose
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModel<CoreViewModel>()
+    private val viewModel by viewModels<CoreViewModel>()
     private var batteryReceiver: BatteryLevelReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -39,6 +39,9 @@ kotlin {
 
             // Splash Screen
             implementation(libs.androidx.core.splashscreen)
+
+            // Pushy
+            implementation(libs.pushy)
         }
         commonMain.dependencies {
             // KMP shared modules

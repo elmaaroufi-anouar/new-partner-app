@@ -1,20 +1,17 @@
 package com.done.partner.presentation.permissions
 
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.icerock.moko.permissions.DeniedAlwaysException
-import dev.icerock.moko.permissions.DeniedException
-import dev.icerock.moko.permissions.Permission
-import dev.icerock.moko.permissions.PermissionState
-import dev.icerock.moko.permissions.PermissionsController
-import dev.icerock.moko.permissions.RequestCanceledException
+import com.done.partner.presentation.permissions.util.AppPermissionsController
+import com.done.partner.presentation.permissions.util.PermissionDeniedAlwaysException
+import com.done.partner.presentation.permissions.util.PermissionDeniedException
+import com.done.partner.presentation.permissions.util.PermissionRequestCanceledException
+import com.done.partner.presentation.permissions.util.PermissionState
 import kotlinx.coroutines.launch
 
 class PermissionsViewModel(
-    private val permissionsController: PermissionsController
+    private val permissionsController: AppPermissionsController
 ): ViewModel() {
 
     val state = mutableStateOf(PermissionState.NotDetermined)
@@ -22,20 +19,20 @@ class PermissionsViewModel(
 
     init {
         viewModelScope.launch {
-            state.value = permissionsController.getPermissionState(Permission.REMOTE_NOTIFICATION)
+            state.value = permissionsController.getPermissionState()
         }
     }
 
     fun provideOrRequestRemoteNotificationPermission() {
         viewModelScope.launch {
             try {
-                permissionsController.providePermission(Permission.REMOTE_NOTIFICATION)
+                permissionsController.providePermission()
                 state.value = PermissionState.Granted
-            } catch (e: DeniedAlwaysException) {
+            } catch (e: PermissionDeniedAlwaysException) {
                 state.value = PermissionState.DeniedAlways
-            } catch (e: DeniedException) {
+            } catch (e: PermissionDeniedException) {
                 state.value = PermissionState.Denied
-            } catch (e: RequestCanceledException) {
+            } catch (e: PermissionRequestCanceledException) {
                 e.printStackTrace()
             }
         }

@@ -24,7 +24,7 @@ actual class RemoteConfigRepositoryImpl : RemoteConfigRepository {
         remoteConfig.setConfigSettingsAsync(configSettings)
     }
 
-    override suspend fun getConfig(): Config? = suspendCancellableCoroutine { continuation ->
+    actual override suspend fun getConfig(): Config? = suspendCancellableCoroutine { continuation ->
         remoteConfig.fetchAndActivate().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 scope.launch {

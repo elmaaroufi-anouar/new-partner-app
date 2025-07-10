@@ -125,9 +125,6 @@ kotlin {
                 api(libs.koin.android)
                 api(libs.koin.androidx.compose)
 
-                // DateTime
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.0")
-
                 // DataStore
                 api(libs.androidx.datastore.preferences)
                 api(libs.androidx.datastore)

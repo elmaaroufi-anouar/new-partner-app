@@ -1,53 +1,52 @@
 package com.done.partner.presentation.permissions.util
 
-import android.Manifest
-import android.Manifest.permission.POST_NOTIFICATIONS
-import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.os.Build
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
-import kotlinx.coroutines.flow.StateFlow
-import kotlin.coroutines.resume
-import kotlin.coroutines.resumeWithException
-import kotlin.coroutines.suspendCoroutine
-import android.provider.Settings
+import androidx.compose.runtime.remember
+import dev.icerock.moko.permissions.Permission
+import dev.icerock.moko.permissions.PermissionsController
+import dev.icerock.moko.permissions.compose.rememberPermissionsControllerFactory
+import dev.icerock.moko.permissions.PermissionState as MokoPermissionState
+import dev.icerock.moko.permissions.DeniedAlwaysException as MokoDeniedAlwaysException
+import dev.icerock.moko.permissions.DeniedException as MokoDeniedException
+import dev.icerock.moko.permissions.RequestCanceledException as MokoRequestCanceledException
 
-actual class PermissionsController(
-    private val context: Context = LocalContext.current
-) {
-    private val permission = POST_NOTIFICATIONS
+actual fun createPermissionsController(): AppPermissionsController {
+    val factory = rememberPermissionsControllerFactory()
+    val controller = remember(factory) { factory.createPermissionsController() }
 
-    actual suspend fun requestPermission() {
-        return suspendCoroutine { continuation ->
-            val launcher = rememberLauncherForActivityResult(
-                contract = ActivityResultContracts.RequestPermission()
-            ) { granted ->
-                if (granted || Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    continuation.resume(Unit)
-                } else {
-                    if (!shouldShowRequestPermissionRationale(context as Activity, permission)) {
-                        continuation.resumeWithException(DeniedAlways("Request denied forever")) // Considered as denied always
-                    } else {
-                        continuation.resumeWithException(Denied("request denied")) // Considered as denied
-                    }
-                }
-            }
+    return AndroidPermissionsController(controller)
+}
 
-            launcher.launch(permission)
+class AndroidPermissionsController(
+    private val permissionsController: PermissionsController
+) : AppPermissionsController {
+    override suspend fun getPermissionState(): PermissionState {
+        val permissionState = permissionsController.getPermissionState(Permission.REMOTE_NOTIFICATION)
+
+        return when(permissionState) {
+            MokoPermissionState.Granted -> PermissionState.Granted
+            MokoPermissionState.Denied -> PermissionState.Denied
+            MokoPermissionState.DeniedAlways -> PermissionState.DeniedAlways
+            MokoPermissionState.NotDetermined -> PermissionState.NotDetermined
+            MokoPermissionState.NotGranted -> PermissionState.NotGranted
         }
     }
 
-    actual fun openAppSettings() {
-        context.startActivity(
-            Intent(
-                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                Uri.fromParts("package", context.packageName, null)
-            )
-        )
+    override suspend fun providePermission() {
+        try {
+            permissionsController.providePermission(Permission.REMOTE_NOTIFICATION)
+        } catch (e: MokoDeniedAlwaysException) {
+            throw PermissionDeniedAlwaysException()
+        } catch (e: MokoDeniedException) {
+            throw PermissionDeniedException()
+        } catch (e: MokoRequestCanceledException) {
+            throw PermissionRequestCanceledException()
+        } catch (e: Exception) {
+            throw e
+        }
     }
+
+    override fun openAppSettings() {
+        permissionsController.openAppSettings()
+    }
+
 }

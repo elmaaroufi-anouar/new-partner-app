@@ -1,10 +1,5 @@
 package com.done.partner.presentation.permissions.util
 
-actual class PermissionsController {
-
-    actual suspend fun requestPermission() {
-    }
-
-    actual fun openAppSettings() {
-    }
+actual fun createPermissionsController(): AppPermissionsController {
+    TODO("Not yet implemented")
 }

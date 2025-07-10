@@ -21,9 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.done.core.presentation.core.design_system.DoneButton
@@ -33,12 +31,10 @@ import com.done.core.presentation.core.design_system.DoneTextField
 import com.done.core.presentation.core.ui.components.ObserveAsEvent
 import com.done.core.presentation.core.ui.components.OnResumeCompose
 import com.done.core.presentation.core.ui.components.networkErrorToast
-import com.done.core.presentation.core.ui.theme.DoneTheme
-import com.done.partner.R
 import com.done.partner.platform
 import com.done.partner.presentation.core.components.Banner
 import com.done.partner.presentation.core.components.UpdatingPlayServicesDialog
-import org.koin.androidx.compose.koinViewModel
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun LoginScreenCore(
@@ -162,13 +158,13 @@ private fun LoginSection(
     )
 }
 
-@Preview
-@Composable
-private fun LoginScreenPreview() {
-    DoneTheme {
-        LoginScreen(
-            state = LoginState(),
-            onAction = {}
-        )
-    }
-}
+//@Preview
+//@Composable
+//private fun LoginScreenPreview() {
+//    DoneTheme {
+//        LoginScreen(
+//            state = LoginState(),
+//            onAction = {}
+//        )
+//    }
+//}

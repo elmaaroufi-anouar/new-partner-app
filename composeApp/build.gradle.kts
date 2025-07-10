@@ -46,7 +46,7 @@ kotlin {
             implementation(projects.composePartner)
 
             // Navigation
-            implementation(libs.androidx.navigation.compose)
+            implementation(libs.jetbrains.compose.navigation)
 
             // konnectivity
             implementation(libs.konnectivity)

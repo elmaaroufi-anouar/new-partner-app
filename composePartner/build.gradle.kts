@@ -66,9 +66,6 @@ kotlin {
                 // KMP shared modules
                 implementation(projects.composeCore)
 
-                // Permissions
-                implementation(libs.moko.permissions)
-                implementation(libs.moko.permissions.compose)
             }
         }
 
@@ -90,6 +87,10 @@ kotlin {
 
                 // Landi
                 implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
+
+                // Permissions
+                implementation(libs.moko.permissions)
+                implementation(libs.moko.permissions.compose)
             }
         }
 
@@ -98,6 +99,7 @@ kotlin {
                 implementation(libs.androidx.runner)
                 implementation(libs.androidx.core)
                 implementation(libs.androidx.testExt.junit)
+                implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
             }
         }
 
@@ -108,6 +110,10 @@ kotlin {
                 // part of KMP’s default source set hierarchy. Note that this source set depends
                 // on common by default and will correctly pull the iOS artifacts of any
                 // KMP dependencies declared in commonMain.
+
+                // Permissions
+                implementation(libs.moko.permissions)
+                implementation(libs.moko.permissions.compose)
             }
         }
 

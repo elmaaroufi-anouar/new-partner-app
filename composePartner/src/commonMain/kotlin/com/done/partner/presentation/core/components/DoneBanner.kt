@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import com.done.partner.R
 import org.jetbrains.compose.resources.painterResource
 
@@ -26,7 +25,7 @@ fun Banner() {
         ) {
 
             Image(
-                painter = painterResource(R.drawable.done_partner),
+                painter = painterResource(Res.drawable.done_partner),
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth(0.5f)
             )

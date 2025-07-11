@@ -1,7 +1,6 @@
 package com.done.partner.data.services.print.landi
 
 import android.content.Context
-import kotlin.printStackTrace
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -21,11 +20,11 @@ actual class LandiPrinterClient(
     fun printOrder(ticket: ByteArray, printTwo: Boolean) {
         processTicketForPrinting(ticket)?.let { processedTicket ->
             try {
-                OmniDriver.me(kotlin.context).init(object : OmniConnection {
+                OmniDriver.me(context).init(object : OmniConnection {
                     override fun onConnected() {
-                        printer = OmniDriver.me(kotlin.context).getPrinter(Bundle())
+                        printer = OmniDriver.me(context).getPrinter(Bundle())
                         printer?.openDevice()
-                        kotlin.io.print(processedTicket, printTwo)
+                        print(processedTicket, printTwo)
                     }
 
                     override fun onDisconnected(error: Int) {}

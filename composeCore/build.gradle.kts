@@ -125,6 +125,9 @@ kotlin {
 
                 // Serialization
                 api(libs.kotlinx.serialization.json)
+
+                // Pushy
+                implementation(libs.pushy)
             }
         }
 

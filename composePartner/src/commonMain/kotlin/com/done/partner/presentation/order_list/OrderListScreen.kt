@@ -1,6 +1,5 @@
 package com.done.partner.presentation.order_list
 
-import android.graphics.Picture
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,10 +35,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.done.partner.domain.models.orders.Order
@@ -56,7 +52,6 @@ import com.done.core.presentation.core.ui.components.OnResumeCompose
 import com.done.core.presentation.core.ui.components.networkErrorToast
 import com.done.core.presentation.core.ui.theme.DoneTheme
 import com.done.core.presentation.core.ui.theme.doneBackgroundOrange
-import com.done.partner.R
 import com.done.partner.presentation.core.components.DeliveryCodeDialog
 import com.done.partner.presentation.core.components.ScreenShootTicket
 import com.done.partner.presentation.core.components.ToggleStoreAvailabilityButton
@@ -74,8 +69,8 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.androidx.compose.koinViewModel
+import org.jetbrains.compose.ui.tooling.preview.Previewes
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun OrderListScreenCore(
@@ -179,14 +174,14 @@ fun OrderListScreenCore(
 
     if (state.isRequestUpdatePlayServicesDialogShowing && !state.isUpdatingPlayServices) {
         DoneDialog(
-            title = stringResource(R.string.update_play_services),
-            description = stringResource(R.string.play_services_desc),
-            image = painterResource(R.drawable.google_play),
+            title = stringResource(Res.string.update_play_services),
+            description = stringResource(Res.string.play_services_desc),
+            image = painterResource(Res.drawable.google_play),
             imageWidth = 100.dp,
             betweenButtonsPadding = 8.dp,
             primaryButton = {
                 DoneButton(
-                    text = stringResource(R.string.update),
+                    text = stringResource(Res.string.update),
                     onClick = {
                         viewModel.onAction(
                             OrderListAction.OnToggleRequestUpdatePlayServicesDialog(
@@ -199,7 +194,7 @@ fun OrderListScreenCore(
             },
             secondaryButton = {
                 DoneOutlinedButton(
-                    text = stringResource(R.string.cancel),
+                    text = stringResource(Res.string.cancel),
                     onClick = {
                         viewModel.onAction(
                             OrderListAction.OnToggleRequestUpdatePlayServicesDialog(
@@ -283,15 +278,15 @@ private fun OrderListScreen(
     if (state.shouldForceUpdate) {
         DoneDialog(
             modifier = Modifier,
-            title = stringResource(R.string.new_version_available),
-            description = stringResource(R.string.message_new_version_available),
+            title = stringResource(Res.string.new_version_available),
+            description = stringResource(Res.string.message_new_version_available),
             primaryButton = {
                 DoneButton(
                     modifier = Modifier
                         .weight(1f)
                         .height(60.dp),
                     onClick = { onAction(OrderListAction.OnUpdateVersionClick) },
-                    text = stringResource(R.string.update),
+                    text = stringResource(Res.string.update),
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.SemiBold
                     )
@@ -340,9 +335,9 @@ fun Orders(
                 text = {
                     Text(
                         text = if (index == 0) {
-                            stringResource(R.string.ongoing)
+                            stringResource(Res.string.ongoing)
                         } else {
-                            stringResource(R.string.finished)
+                            stringResource(Res.string.finished)
                         },
                         style = MaterialTheme.typography.bodyMedium.copy(
                             fontWeight = FontWeight.Medium

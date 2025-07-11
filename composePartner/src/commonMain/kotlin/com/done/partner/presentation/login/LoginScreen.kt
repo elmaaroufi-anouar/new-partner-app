@@ -35,6 +35,7 @@ import com.done.partner.platform
 import com.done.partner.presentation.core.components.Banner
 import com.done.partner.presentation.core.components.UpdatingPlayServicesDialog
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun LoginScreenCore(
@@ -127,7 +128,7 @@ private fun LoginSection(
         textFieldState = state.email,
         startIcon = Icons.Outlined.Email,
         keyBoardType = KeyboardType.Email,
-        hint = stringResource(R.string.email),
+        hint = stringResource(Res.string.email),
         modifier = Modifier.fillMaxWidth()
     )
 
@@ -139,16 +140,16 @@ private fun LoginSection(
         onTogglePasswordVisibility = {
             onAction(LoginAction.OnTogglePasswordVisibilityClick)
         },
-        hint = stringResource(R.string.password),
+        hint = stringResource(Res.string.password),
         modifier = Modifier.fillMaxWidth(),
-        showPassword = stringResource(R.string.show_password),
-        hidePassword = stringResource(R.string.hide_password),
+        showPassword = stringResource(Res.string.show_password),
+        hidePassword = stringResource(Res.string.hide_password),
     )
 
     Spacer(modifier = Modifier.height(22.dp))
 
     DoneButton(
-        text = stringResource(R.string.login),
+        text = stringResource(Res.string.login),
         isLoading = state.isLoggingIn,
         enabled = state.canLogin,
         modifier = Modifier.fillMaxWidth(),

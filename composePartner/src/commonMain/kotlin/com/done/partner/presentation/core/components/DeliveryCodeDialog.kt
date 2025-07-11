@@ -26,7 +26,6 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.design_system.DoneTextField
-import com.done.partner.R
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -63,7 +62,7 @@ fun DeliveryCodeDialog(
             Spacer(Modifier.width(6.dp))
 
             Text(
-                text = stringResource(R.string.enter_delivery_confirmation_code),
+                text = stringResource(Res.string.enter_delivery_confirmation_code),
                 style = MaterialTheme.typography.titleSmall.copy(
                     fontWeight = FontWeight.Medium
                 ),
@@ -85,7 +84,7 @@ fun DeliveryCodeDialog(
             Spacer(Modifier.height(26.dp))
 
             DoneButton(
-                text = stringResource(R.string.confirm),
+                text = stringResource(Res.string.confirm),
                 style = MaterialTheme.typography.headlineSmall.copy(
                     fontWeight = FontWeight.SemiBold
                 ),

@@ -1,6 +1,5 @@
 package com.done.partner.presentation.store.component
 
-import com.done.partner.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -23,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -94,7 +92,7 @@ fun QuantityButton(
                     .weight(0.3f)
             ) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_plus_no_border),
+                    painter = painterResource(Res.drawable.ic_plus_no_border),
                     contentDescription = null,
                     tint = if (isPlusEnabled) {
                         MaterialTheme.colorScheme.onBackground
@@ -117,8 +115,8 @@ fun QuantityButton(
                 .size(34.dp)
         ) {
             Image(
-                painter = if (isPlusEnabled) painterResource(R.drawable.bg_add_product) else
-                    painterResource(R.drawable.bg_add_product_gray),
+                painter = if (isPlusEnabled) painterResource(Res.drawable.bg_add_product) else
+                    painterResource(Res.drawable.bg_add_product_gray),
                 contentDescription = null,
             )
         }

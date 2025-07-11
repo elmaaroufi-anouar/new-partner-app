@@ -9,11 +9,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.done.partner.domain.models.orders.Order
-import com.done.partner.R
 import com.done.partner.presentation.order_list.OrderListAction
 import com.done.partner.presentation.order_list.OrderListState
 import com.done.partner.domain.models.orders.status.OrderStatus
@@ -29,7 +27,7 @@ fun LazyListScope.DeliverdAndCancelledOrders(
 
     stickyHeader {
         Text(
-            text = stringResource(R.string.delivered_canceled) + if (orders.isNotEmpty()) " (" + orders.size + ")" else "",
+            text = stringResource(Res.string.delivered_canceled) + if (orders.isNotEmpty()) " (" + orders.size + ")" else "",
             style = MaterialTheme.typography.titleSmall.copy(
                 fontWeight = FontWeight.Bold
             ),

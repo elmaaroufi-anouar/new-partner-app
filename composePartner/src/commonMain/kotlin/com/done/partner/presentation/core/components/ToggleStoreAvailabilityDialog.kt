@@ -16,15 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.done.partner.R
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.ui.theme.DoneTheme
 import org.jetbrains.compose.resources.painterResource
@@ -84,9 +80,9 @@ fun ToggleStoreAvailabilityDialog(
 
             Text(
                 text = if (isStoreOpen) {
-                    stringResource(R.string.if_you_close_your_store_you_won_t_be_receiving_any_orders)
+                    stringResource(Res.string.if_you_close_your_store_you_won_t_be_receiving_any_orders)
                 } else {
-                    stringResource(R.string.show_customers_that_you_re_open_and_available_to_receive_orders)
+                    stringResource(Res.string.show_customers_that_you_re_open_and_available_to_receive_orders)
                 },
                 style = MaterialTheme.typography.bodySmall,
                 textAlign = TextAlign.Center
@@ -99,9 +95,9 @@ fun ToggleStoreAvailabilityDialog(
                 verticalPadding = 3.dp,
                 style = MaterialTheme.typography.bodyMedium,
                 text = if (isStoreOpen) {
-                    stringResource(R.string.close_store)
+                    stringResource(Res.string.close_store)
                 } else {
-                    stringResource(R.string.ready_to_open)
+                    stringResource(Res.string.ready_to_open)
                 },
                 onClick = {
                     onToggleStoreAvailability()
@@ -115,9 +111,9 @@ fun ToggleStoreAvailabilityDialog(
                     onDismiss()
                 },
                 text = if (isStoreOpen) {
-                    stringResource(R.string.don_t_close)
+                    stringResource(Res.string.don_t_close)
                 } else {
-                    stringResource(R.string.not_ready_yet)
+                    stringResource(Res.string.not_ready_yet)
                 },
                 style = MaterialTheme.typography.bodySmall.copy(
                     fontWeight = FontWeight.Medium
@@ -131,12 +127,12 @@ fun ToggleStoreAvailabilityDialog(
     }
 }
 
-@Preview
-@Composable
-private fun ChangeStoreAvailabilityDialogPreview() {
-    DoneTheme {
-        ToggleStoreAvailabilityDialog(
-            isStoreOpen = true
-        )
-    }
-}
+//@Preview
+//@Composable
+//private fun ChangeStoreAvailabilityDialogPreview() {
+//    DoneTheme {
+//        ToggleStoreAvailabilityDialog(
+//            isStoreOpen = true
+//        )
+//    }
+//}

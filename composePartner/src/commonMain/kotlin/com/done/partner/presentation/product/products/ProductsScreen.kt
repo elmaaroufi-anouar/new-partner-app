@@ -20,10 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.done.partner.domain.models.product.Product
@@ -33,14 +30,16 @@ import com.done.core.presentation.core.ui.components.networkErrorToast
 import com.done.core.presentation.core.ui.theme.DoneTheme
 import com.done.core.presentation.core.ui.theme.doneBackgroundOrange
 import com.done.core.presentation.core.ui.theme.doneGreen
-import com.done.partner.R
 import com.done.partner.presentation.core.components.ToggleStoreAvailabilityButton
 import com.done.partner.presentation.core.components.ToggleStoreAvailabilityDialog
 import com.done.partner.presentation.product.products.components.DisableProductsFab
 import com.done.partner.presentation.product.products.components.UpdateProductPriceDialog
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filter
-import org.koin.androidx.compose.koinViewModel
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ProductsScreenCore(
@@ -102,7 +101,7 @@ private fun ProductsScreen(
         topBar = { topAppBarScrollBehavior ->
             DoneTopBar(
                 scrollBehavior = topAppBarScrollBehavior,
-                titleText = stringResource(R.string.products),
+                titleText = stringResource(Res.string.products),
                 actionIconContent = {
                     ToggleStoreAvailabilityButton(
                         storeExists = state.selectedStore != null,
@@ -130,7 +129,7 @@ private fun ProductsScreen(
             Spacer(Modifier.height(8.dp))
             DoneTextField(
                 textFieldState = state.searchProductsQueryState,
-                hint = stringResource(R.string.search_in_products),
+                hint = stringResource(Res.string.search_in_products),
                 startIcon = Icons.Rounded.Search,
                 startIconTint = MaterialTheme.colorScheme.onBackground.copy(0.3f),
                 modifier = Modifier.padding(horizontal = 16.dp)
@@ -149,7 +148,7 @@ private fun ProductsScreen(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = stringResource(R.string.you_have_no_products))
+                        Text(text = stringResource(Res.string.you_have_no_products))
                     }
                 } else {
                     Products(
@@ -174,8 +173,8 @@ private fun ProductsScreen(
                 onUndo = {
                     onAction(ProductsAction.OnUndoDisableSelectedProducts)
                 },
-                message = stringResource(R.string.product_successfully_disabled),
-                actionLabel = stringResource(R.string.undo)
+                message = stringResource(Res.string.product_successfully_disabled),
+                actionLabel = stringResource(Res.string.undo)
             )
         }
 
@@ -327,7 +326,7 @@ private fun ProductItem(
                 )
             } else {
                 Image(
-                    painter = painterResource(R.drawable.product_dark),
+                    painter = painterResource(Res.drawable.product_dark),
                     contentDescription = product.name,
                     modifier = Modifier
                         .size(40.dp)
@@ -383,7 +382,7 @@ private fun ProductItem(
 
             if (!product.isEnabled) {
                 DoneOutlinedButton(
-                    text = stringResource(R.string.enable),
+                    text = stringResource(Res.string.enable),
                     textColor = doneGreen,
                     style = MaterialTheme.typography.bodyLarge,
                     isLoading = state.selectedProductToEnableIndex == index || state.isUpdatingProductsAvailability && product.isSelectedToDisable,

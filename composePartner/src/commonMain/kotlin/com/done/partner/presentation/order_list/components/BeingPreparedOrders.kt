@@ -25,13 +25,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.done.partner.R
 import com.done.partner.domain.models.orders.Order
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.ui.theme.DoneTheme
@@ -40,6 +36,7 @@ import com.done.partner.presentation.order_list.OrderListAction
 import com.done.partner.presentation.order_list.OrderListState
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 fun LazyListScope.BeingPreparedOrders(
     orders: List<Order>,
@@ -49,7 +46,7 @@ fun LazyListScope.BeingPreparedOrders(
 
     item {
         Text(
-            text = stringResource(R.string.accepted) + if (orders.isNotEmpty()) " (" + orders.size + ")" else "",
+            text = stringResource(Res.string.accepted) + if (orders.isNotEmpty()) " (" + orders.size + ")" else "",
             style = MaterialTheme.typography.titleLarge.copy(
                 fontWeight = FontWeight.Bold
             ),
@@ -71,8 +68,8 @@ fun LazyListScope.BeingPreparedOrders(
     } else {
         item {
             NoOrdersCard(
-                description = stringResource(R.string.you_have_no_accepted_orders),
-                icon = painterResource(R.drawable.check)
+                description = stringResource(Res.string.you_have_no_accepted_orders),
+                icon = painterResource(Res.drawable.check)
             )
         }
     }
@@ -137,7 +134,7 @@ fun BeingPreparedOrderItem(
 
                 Box {
                     Icon(
-                        painter = painterResource(R.drawable.shopping_bag),
+                        painter = painterResource(Res.drawable.shopping_bag),
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onBackground,
                         modifier = Modifier
@@ -170,13 +167,13 @@ fun BeingPreparedOrderItem(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        painter = painterResource(R.drawable.check_circle),
+                        painter = painterResource(Res.drawable.check_circle),
                         contentDescription = null,
                         modifier = Modifier.size(20.dp)
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(
-                        text = stringResource(R.string.mark_as_ready),
+                        text = stringResource(Res.string.mark_as_ready),
                         style = MaterialTheme.typography.bodyLarge.copy(
                             fontWeight = FontWeight.Bold
                         )
@@ -209,7 +206,7 @@ private fun AcceptedOrderPreview() {
 
             Box {
                 Icon(
-                    painter = painterResource(R.drawable.shopping_bag),
+                    painter = painterResource(Res.drawable.shopping_bag),
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier

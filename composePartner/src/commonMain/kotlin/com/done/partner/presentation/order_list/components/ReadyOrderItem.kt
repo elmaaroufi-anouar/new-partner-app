@@ -22,11 +22,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.done.partner.R
 import com.done.partner.domain.models.orders.Order
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.ui.theme.doneGreen
@@ -89,7 +86,7 @@ fun ReadyOrderItem(
                 }
                 if (!order.inStorePickup) {
                     Icon(
-                        painter = painterResource(R.drawable.check_circle),
+                        painter = painterResource(Res.drawable.check_circle),
                         contentDescription = null,
                         tint = doneGreen,
                         modifier = Modifier.size(27.dp)
@@ -106,7 +103,7 @@ fun ReadyOrderItem(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            painter = painterResource(R.drawable.driver),
+                            painter = painterResource(Res.drawable.driver),
                             contentDescription = null,
                             modifier = Modifier.size(27.dp)
                         )
@@ -128,7 +125,7 @@ fun ReadyOrderItem(
 
             if (order.inStorePickup) {
                 DoneButton(
-                    text = stringResource(R.string.confirm_delivery),
+                    text = stringResource(Res.string.confirm_delivery),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(65.dp),

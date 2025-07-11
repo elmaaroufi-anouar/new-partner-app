@@ -1,10 +1,6 @@
 package com.done.partner.presentation.order_details
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.graphics.Picture
-import android.provider.Settings
-import androidx.activity.compose.BackHandler
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -51,12 +47,8 @@ import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -80,7 +72,6 @@ import com.done.core.presentation.core.ui.components.networkErrorToast
 import com.done.core.presentation.core.ui.theme.DoneTheme
 import com.done.core.presentation.core.ui.theme.doneGreen
 import com.done.core.presentation.core.ui.theme.doneOrange
-import com.done.partner.R
 import com.done.partner.presentation.core.components.DeliveryCodeDialog
 import com.done.partner.presentation.core.components.ScreenShootTicket
 import com.done.partner.presentation.core.components.createBitmapBytesFromPicture
@@ -89,7 +80,6 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -137,14 +127,14 @@ fun OrderDetailsScreenCore(
 
     if (showNoInternetDialog) {
         DoneDialog(
-            image = painterResource(R.drawable.image_error_internet),
-            description = stringResource(com.done.core.R.string.make_sure_you_have_a_valid_internet_connection),
-            title = stringResource(R.string.no_internet_connection),
+            image = painterResource(Res.drawable.image_error_internet),
+            description = stringResource(com.done.core.Res.string.make_sure_you_have_a_valid_internet_connection),
+            title = stringResource(Res.string.no_internet_connection),
             onDismiss = { showNoInternetDialog = false },
             betweenButtonsPadding = 10.dp,
             secondaryButton = {
                 DoneOutlinedButton(
-                    text = stringResource(R.string.cancel),
+                    text = stringResource(Res.string.cancel),
                     style = MaterialTheme.typography.bodyLarge,
                     verticalPadding = 4.dp,
                     onClick = { showNoInternetDialog = false },
@@ -153,7 +143,7 @@ fun OrderDetailsScreenCore(
             },
             primaryButton = {
                 DoneButton(
-                    text = stringResource(R.string.activate),
+                    text = stringResource(Res.string.activate),
                     style = MaterialTheme.typography.bodyLarge,
                     verticalPadding = 4.dp,
                     onClick = {
@@ -249,23 +239,23 @@ private fun OrderDetailsScreen(
                     val text: String
                     when (status) {
                         OrderStatus.PENDING -> {
-                            text = stringResource(R.string.pending)
+                            text = stringResource(Res.string.pending)
                         }
 
                         OrderStatus.BEING_PREPARED -> {
-                            text = stringResource(R.string.being_prepared)
+                            text = stringResource(Res.string.being_prepared)
                         }
 
                         OrderStatus.READY_FOR_PICKUP -> {
-                            text = stringResource(R.string.ready)
+                            text = stringResource(Res.string.ready)
                         }
 
                         OrderStatus.DELIVERED -> {
-                            text = stringResource(R.string.delivered)
+                            text = stringResource(Res.string.delivered)
                         }
 
                         else -> {
-                            text = stringResource(R.string.declined)
+                            text = stringResource(Res.string.declined)
                         }
                     }
 
@@ -305,7 +295,7 @@ private fun OrderDetailsScreen(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
-                                    text = stringResource(R.string.edit),
+                                    text = stringResource(Res.string.edit),
                                     style = MaterialTheme.typography.bodyMedium.copy(
                                         fontWeight = FontWeight.SemiBold
                                     ),
@@ -339,7 +329,7 @@ private fun OrderDetailsScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(R.string.couldn_t_load_order),
+                    text = stringResource(Res.string.couldn_t_load_order),
                     style = MaterialTheme.typography.bodyMedium
                 )
 
@@ -347,7 +337,7 @@ private fun OrderDetailsScreen(
 
                 DoneOutlinedButton(
                     onClick = { onAction(OrderDetailsAction.OnRefresh) },
-                    text = stringResource(R.string.try_again),
+                    text = stringResource(Res.string.try_again),
                     style = MaterialTheme.typography.bodyMedium,
                     verticalPadding = 1.dp,
                     textColor = doneGreen,
@@ -407,13 +397,13 @@ private fun OrderDetailsScreen(
 
                             Column {
                                 Text(
-                                    text = stringResource(R.string.preparation_time),
+                                    text = stringResource(Res.string.preparation_time),
                                     color = MaterialTheme.colorScheme.primary,
                                     style = MaterialTheme.typography.bodyLarge,
                                     fontWeight = FontWeight.Medium
                                 )
                                 Text(
-                                    text = "${state.order.minutesUntilPreparation} ${stringResource(R.string.minutes)}",
+                                    text = "${state.order.minutesUntilPreparation} ${stringResource(Res.string.minutes)}",
                                     style = MaterialTheme.typography.titleSmall.copy(
                                         fontWeight = FontWeight.SemiBold
                                     )
@@ -440,7 +430,7 @@ private fun OrderDetailsScreen(
                             modifier = Modifier.padding(horizontal = 16.dp)
                         ) {
                             Icon(
-                                painter = painterResource(R.drawable.message),
+                                painter = painterResource(Res.drawable.message),
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.size(20.dp)
@@ -449,7 +439,7 @@ private fun OrderDetailsScreen(
                             Spacer(Modifier.width(10.dp))
 
                             Text(
-                                text = stringResource(R.string.customer_request),
+                                text = stringResource(Res.string.customer_request),
                                 color = MaterialTheme.colorScheme.primary,
                                 style = MaterialTheme.typography.bodyLarge.copy(
                                     fontWeight = FontWeight.Medium
@@ -480,7 +470,7 @@ private fun OrderDetailsScreen(
 
                     if (order.inStorePickup && state.order.status == OrderStatus.READY_FOR_PICKUP) {
                         DoneButton(
-                            text = stringResource(R.string.confirm_delivery),
+                            text = stringResource(Res.string.confirm_delivery),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(65.dp)
@@ -518,7 +508,7 @@ private fun OrderDetailsScreen(
                                 )
                                 Spacer(Modifier.width(10.dp))
                                 Text(
-                                    text = stringResource(R.string.print_order),
+                                    text = stringResource(Res.string.print_order),
                                     color = MaterialTheme.colorScheme.primary,
                                     style = MaterialTheme.typography.bodyLarge.copy(
                                         fontWeight = FontWeight.SemiBold
@@ -557,8 +547,8 @@ private fun OrderDetailsScreen(
 
     if (isDeclineOrderDialogShowing) {
         DoneDialog(
-            title = stringResource(R.string.decline_order),
-            description = stringResource(R.string.are_you_sure_you_want_to_decline_this_order),
+            title = stringResource(Res.string.decline_order),
+            description = stringResource(Res.string.are_you_sure_you_want_to_decline_this_order),
             onDismiss = {
                 isDeclineOrderDialogShowing = false
             },
@@ -569,7 +559,7 @@ private fun OrderDetailsScreen(
                     onClick = {
                         isDeclineOrderDialogShowing = false
                     },
-                    text = stringResource(R.string.no)
+                    text = stringResource(Res.string.no)
                 )
             },
             secondaryButton = {
@@ -579,7 +569,7 @@ private fun OrderDetailsScreen(
                         onAction(OrderDetailsAction.OnDeclineOrder)
                         isDeclineOrderDialogShowing = false
                     },
-                    text = stringResource(R.string.yes)
+                    text = stringResource(Res.string.yes)
                 )
             }
         )
@@ -618,9 +608,9 @@ fun BottomButton(
                         }
                     },
                     text = if (status == OrderStatus.PENDING) {
-                        stringResource(R.string.accept_order)
+                        stringResource(Res.string.accept_order)
                     } else {
-                        stringResource(R.string.mark_as_ready)
+                        stringResource(Res.string.mark_as_ready)
                     },
                     isLoading = state.isLoading,
                     style = MaterialTheme.typography.bodyLarge.copy(
@@ -684,7 +674,7 @@ fun OrderDetailsNumber(order: Order) {
         val date = if (order.createdAt.length > 4) {
             order.createdAt.take(10)
         } else if (order.createdAt.isNotEmpty()) {
-            stringResource(R.string.min_ago, order.createdAt)
+            stringResource(Res.string.min_ago, order.createdAt)
         } else {
             ""
         }
@@ -762,7 +752,7 @@ fun TotalPrices(
 
     ) {
         Text(
-            text = stringResource(R.string.total_price),
+            text = stringResource(Res.string.total_price),
             style = MaterialTheme.typography.titleLarge.copy(
                 fontWeight = FontWeight.SemiBold
             )
@@ -787,7 +777,7 @@ fun TotalPrices(
 
     ) {
         Text(
-            text = stringResource(R.string.vat_incl),
+            text = stringResource(Res.string.vat_incl),
             style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Medium
             )
@@ -818,7 +808,7 @@ fun OrderDetailsDriver(
                     .padding(bottom = 4.dp)
             ) {
                 Text(
-                    text = stringResource(R.string.driver),
+                    text = stringResource(Res.string.driver),
                     lineHeight = 1.sp,
                     style = MaterialTheme.typography.titleSmall.copy(
                         fontWeight = FontWeight.ExtraBold

@@ -38,7 +38,6 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -48,14 +47,12 @@ import com.done.core.presentation.core.design_system.DoneTopBar
 import com.done.core.presentation.core.ui.components.ObserveAsEvent
 import com.done.core.presentation.core.ui.components.OnResumeCompose
 import com.done.core.presentation.core.ui.components.networkErrorToast
-import com.done.partner.R
 import com.done.partner.presentation.store.product_detail.ProductDetailSheetRoot
 import com.done.partner.presentation.store.store_detail.component.ProductInlineItem
 import com.done.partner.presentation.store.store_detail.component.ShadowDivider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
-import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -76,7 +73,7 @@ fun StoreDetailScreenRoot(
             }
             StoreDetailEvent.OrderUpdated -> {
                 Toast.makeText(
-                    context, context.getString(R.string.order_updated), Toast.LENGTH_SHORT
+                    context, context.getString(Res.string.order_updated), Toast.LENGTH_SHORT
                 ).show()
                 onBackClick()
             }
@@ -217,7 +214,7 @@ fun StoreDetailScreen(
                         if (state.store == null && !state.isLoading) {
                             Box(Modifier.fillMaxSize()) {
                                 Text(
-                                    text = stringResource(R.string.something_went_wrong),
+                                    text = stringResource(Res.string.something_went_wrong),
                                     style = MaterialTheme.typography.bodyMedium.copy(
                                         fontWeight = FontWeight.Normal
                                     ),
@@ -235,7 +232,7 @@ fun StoreDetailScreen(
                         item {
                             Box(modifier = Modifier.fillMaxSize()) {
                                 Text(
-                                    text = stringResource(R.string.no_products_found),
+                                    text = stringResource(Res.string.no_products_found),
                                     style = MaterialTheme.typography.bodyMedium.copy(
                                         fontWeight = FontWeight.Normal
                                     ),
@@ -308,7 +305,7 @@ fun StoreDetailScreen(
                 ) {
                     HorizontalDivider(color = MaterialTheme.colorScheme.onBackground.copy(0.08f))
                     DoneButton(
-                        text = stringResource(R.string.confirm),
+                        text = stringResource(Res.string.confirm),
                         isLoading = state.isUpdatingOrder,
                         onClick = { onAction(StoreDetailAction.OnConfirmOrder) },
                         modifier = Modifier

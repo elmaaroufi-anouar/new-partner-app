@@ -69,7 +69,7 @@ fun DeliveredOrderItem(
                 )
 
                 Icon(
-                    painter = painterResource(R.drawable.check_circle),
+                    painter = painterResource(Res.drawable.check_circle),
                     contentDescription = null,
                     tint = Color.Green,
                     modifier = Modifier.size(27.dp)
@@ -84,7 +84,7 @@ fun DeliveredOrderItem(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Icon(
-                            painter = painterResource(R.drawable.driver),
+                            painter = painterResource(Res.drawable.driver),
                             contentDescription = null,
                             modifier = Modifier.size(27.dp)
                         )

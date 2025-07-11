@@ -17,10 +17,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.done.partner.R
 import com.done.partner.domain.models.orders.Order
 import com.done.partner.presentation.order_list.OrderListAction
 import com.done.partner.presentation.order_list.OrderListState
@@ -57,7 +55,7 @@ fun CancelledOrderItem(
             )
 
             Icon(
-                painter = painterResource(R.drawable.cancel),
+                painter = painterResource(Res.drawable.cancel),
                 contentDescription = null,
                 tint = Color.Red,
                 modifier = Modifier.size(27.dp)

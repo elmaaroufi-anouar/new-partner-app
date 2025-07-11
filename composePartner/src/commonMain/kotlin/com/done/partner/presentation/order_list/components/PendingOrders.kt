@@ -43,6 +43,7 @@ import com.done.partner.presentation.order_list.OrderListAction
 import com.done.partner.presentation.order_list.OrderListState
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 fun LazyListScope.PendingOrders(
     orders: List<Order>,
@@ -52,7 +53,7 @@ fun LazyListScope.PendingOrders(
 
     item {
         Text(
-            text = stringResource(R.string.pending) + if (orders.isNotEmpty()) " (" + orders.size + ")" else "",
+            text = stringResource(Res.string.pending) + if (orders.isNotEmpty()) " (" + orders.size + ")" else "",
             style = MaterialTheme.typography.titleLarge.copy(
                 fontWeight = FontWeight.Bold
             ),
@@ -75,8 +76,8 @@ fun LazyListScope.PendingOrders(
     } else {
         item {
             NoOrdersCard(
-                description = stringResource(R.string.you_have_no_pending_orders),
-                icon = painterResource(R.drawable.pending)
+                description = stringResource(Res.string.you_have_no_pending_orders),
+                icon = painterResource(Res.drawable.pending)
             )
         }
     }
@@ -142,7 +143,7 @@ fun PendingOrderItem(
             val date = if (order.createdAt.length > 4) {
                 order.createdAt.take(10)
             } else if (order.createdAt.isNotEmpty()) {
-                stringResource(R.string.min_ago, order.createdAt)
+                stringResource(Res.string.min_ago, order.createdAt)
             } else {
                 ""
             }
@@ -208,7 +209,7 @@ fun PendingOrderItem(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = stringResource(R.string.total_price),
+                    text = stringResource(Res.string.total_price),
                     style = MaterialTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold
                     ),
@@ -230,7 +231,7 @@ fun PendingOrderItem(
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontWeight = FontWeight.ExtraBold
             ),
-            text = stringResource(R.string.accept),
+            text = stringResource(Res.string.accept),
             onClick = {
                 onAction(
                     OrderListAction.OnAcceptOrder(order = order)

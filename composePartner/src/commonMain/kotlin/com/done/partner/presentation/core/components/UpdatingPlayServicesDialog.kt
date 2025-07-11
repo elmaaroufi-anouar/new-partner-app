@@ -13,12 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.done.partner.R
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -46,13 +44,13 @@ fun UpdatingPlayServicesDialog() {
                 )
                 Spacer(Modifier.size(16.dp))
                 Text(
-                    text = stringResource(R.string.updating_play_services),
+                    text = stringResource(Res.string.updating_play_services),
                     textAlign = TextAlign.Center,
                     color = Color.White,
                 )
                 Spacer(Modifier.size(8.dp))
                 Text(
-                    text = stringResource(R.string.please_don_t_close_the_app),
+                    text = stringResource(Res.string.please_don_t_close_the_app),
                     textAlign = TextAlign.Center,
                     color = Color.White
                 )

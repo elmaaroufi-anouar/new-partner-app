@@ -22,12 +22,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.done.partner.R
 import com.done.core.presentation.core.ui.theme.DoneTheme
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -71,14 +67,14 @@ fun ToggleStoreAvailabilityButton(
                     .size(22.dp)
                     .alpha(if (storeExists) 1f else 0.2f),
                 painter = if (isStoreOpen) {
-                    painterResource(R.drawable.store_open)
+                    painterResource(Res.drawable.store_open)
                 } else {
-                    painterResource(R.drawable.store_closed)
+                    painterResource(Res.drawable.store_closed)
                 },
                 contentDescription = if (isStoreOpen) {
-                    stringResource(R.string.store_is_open)
+                    stringResource(Res.string.store_is_open)
                 } else {
-                    stringResource(R.string.store_is_closed)
+                    stringResource(Res.string.store_is_closed)
                 }
             )
 
@@ -88,11 +84,11 @@ fun ToggleStoreAvailabilityButton(
                 modifier = Modifier
                     .alpha(if (storeExists) 1f else 0.2f),
                 text = if (!storeExists) {
-                    stringResource(R.string.unavailable)
+                    stringResource(Res.string.unavailable)
                 } else if (isStoreOpen) {
-                    stringResource(R.string.opened)
+                    stringResource(Res.string.opened)
                 } else {
-                    stringResource(R.string.closed)
+                    stringResource(Res.string.closed)
                 },
                 style = MaterialTheme.typography.bodySmall.copy(
                     fontWeight = FontWeight.SemiBold

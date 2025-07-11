@@ -50,8 +50,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
@@ -63,12 +61,10 @@ import com.done.partner.domain.models.cart.CartProductOption
 import com.done.partner.domain.models.product.Product
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.design_system.DoneScaffold
-import com.done.partner.R
 import com.done.partner.presentation.store.product_detail.component.OptionGroupItem
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -231,7 +227,7 @@ fun ProductDetailSheet(
 
                                         }) {
                                         Image(
-                                            painter = painterResource(R.drawable.ic_moin_product),
+                                            painter = painterResource(Res.drawable.ic_moin_product),
                                             contentDescription = null,
                                             modifier = Modifier.size(45.dp),
                                         )
@@ -251,7 +247,7 @@ fun ProductDetailSheet(
                                             onAction(ProductDetailAction.OnIncrement)
                                         }) {
                                         Image(
-                                            painter = painterResource(R.drawable.ic_plus),
+                                            painter = painterResource(Res.drawable.ic_plus),
                                             contentDescription = null,
                                             modifier = Modifier.size(45.dp),
                                         )
@@ -347,7 +343,7 @@ fun ProductImage(
     ) {
         if (list.isEmpty()) {
             Image(
-                painter = painterResource(R.drawable.product_placeholder),
+                painter = painterResource(Res.drawable.product_placeholder),
                 contentDescription = null,
                 modifier = Modifier.then(
                     Modifier.fillMaxSize()
@@ -366,8 +362,8 @@ fun ProductImage(
                 modifier = Modifier.then(
                     Modifier.fillMaxSize()
                 ),
-                placeholder = painterResource(R.drawable.product_placeholder),
-                error = painterResource(R.drawable.product_placeholder),
+                placeholder = painterResource(Res.drawable.product_placeholder),
+                error = painterResource(Res.drawable.product_placeholder),
                 contentScale = ContentScale.Crop
             )
         }
@@ -510,8 +506,8 @@ private fun CartItem(
                 }
             },
             text = if (state.cartProduct != null)
-                stringResource(R.string.confirm_product)
-            else stringResource(R.string.add_product),
+                stringResource(Res.string.confirm_product)
+            else stringResource(Res.string.add_product),
             style = MaterialTheme.typography.bodyLarge,
             enabled = state.canAddProduct,
             modifier = Modifier

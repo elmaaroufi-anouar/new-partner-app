@@ -6,12 +6,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.done.partner.domain.models.orders.Order
-import com.done.partner.R
 import com.done.partner.presentation.order_list.OrderListAction
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -23,7 +20,7 @@ fun LazyListScope.ReadyToPickupOrders(
 
     item {
         Text(
-            text = stringResource(R.string.ready) + if (orders.isNotEmpty()) " (" + orders.size + ")" else "",
+            text = stringResource(Res.string.ready) + if (orders.isNotEmpty()) " (" + orders.size + ")" else "",
             style = MaterialTheme.typography.titleLarge.copy(
                 fontWeight = FontWeight.Bold
             ),
@@ -44,8 +41,8 @@ fun LazyListScope.ReadyToPickupOrders(
     }  else {
         item {
             NoOrdersCard(
-                description = stringResource(R.string.you_gave_no_ready_orders),
-                icon = painterResource(R.drawable.shopping_bag)
+                description = stringResource(Res.string.you_gave_no_ready_orders),
+                icon = painterResource(Res.drawable.shopping_bag)
             )
         }
     }

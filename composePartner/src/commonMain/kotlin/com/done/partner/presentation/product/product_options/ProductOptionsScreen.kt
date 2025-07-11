@@ -49,9 +49,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.done.partner.domain.models.price.Price
@@ -64,12 +62,10 @@ import com.done.core.presentation.core.ui.components.networkErrorToast
 import com.done.core.presentation.core.ui.theme.DoneTheme
 import com.done.core.presentation.core.ui.theme.doneBackgroundOrange
 import com.done.core.presentation.core.ui.theme.doneGreen
-import com.done.partner.R
 import com.done.partner.presentation.product.product_options.components.DisableOptionsFab
 import com.done.partner.presentation.product.product_options.components.UpdateOptionPriceDialog
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -127,7 +123,7 @@ private fun ProductOptionsScreen(
             ) {
                 DoneTopBar(
                     scrollBehavior = topAppBarScrollBehavior,
-                    titleText = stringResource(R.string.options),
+                    titleText = stringResource(Res.string.options),
                     navigationIcon = Icons.AutoMirrored.Default.ArrowBackIos,
                     onNavigationClick = {
                         onAction(ProductOptionsAction.OnBackClick)
@@ -180,7 +176,7 @@ private fun ProductOptionsScreen(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            Text(text = stringResource(R.string.couldn_t_load_product))
+                            Text(text = stringResource(Res.string.couldn_t_load_product))
                         }
                     } else {
                         ProductOptions(
@@ -306,7 +302,7 @@ private fun OptionGroupItem(
         if (options.none { it.isEnabled }) {
             Spacer(Modifier.height(6.dp))
             DoneOutlinedButton(
-                text = stringResource(R.string.enable),
+                text = stringResource(Res.string.enable),
                 textColor = doneGreen,
                 style = MaterialTheme.typography.bodyLarge,
                 isLoading = state.selectedOptionGroupToEnableId == optionGroup.first,
@@ -436,7 +432,7 @@ private fun OptionItem(
 
             if (!option.isEnabled) {
                 DoneOutlinedButton(
-                    text = stringResource(R.string.enable),
+                    text = stringResource(Res.string.enable),
                     textColor = doneGreen,
                     style = MaterialTheme.typography.bodyLarge,
                     isLoading = state.selectedOptionToEnableId == option.id || state.isUpdatingOptionsAvailability && option.isSelectedToDisable,

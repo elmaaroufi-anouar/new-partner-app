@@ -55,7 +55,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.done.partner.domain.models.cart.CartProduct
 import com.done.partner.domain.models.cart.CartProductOption
 import com.done.partner.domain.models.product.Product

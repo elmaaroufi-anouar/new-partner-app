@@ -9,8 +9,6 @@ import android.graphics.Picture
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Message
 import androidx.compose.material.icons.outlined.PersonOutline
@@ -33,15 +31,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.createBitmap
 import com.done.core.domain.models.language.LanguageCodes
 import com.done.partner.domain.models.orders.Order
-import com.done.partner.domain.models.orders.previewOrders
-import com.done.core.presentation.core.ui.theme.DoneTheme
-import com.done.partner.R
 import com.done.partner.domain.services.print.formatDate
 import com.done.partner.domain.services.print.getTimeAfterMinutes
 import com.done.partner.domain.util.Printer
@@ -401,21 +395,21 @@ fun createBitmapBytesFromPicture(picture: Picture): ByteArray {
     return outputStream.toByteArray()
 }
 
-@Preview
-@Composable
-private fun ReceiptLayoutPreview() {
-    DoneTheme {
-        Column(
-            modifier = Modifier
-                .background(Color.White)
-                .verticalScroll(rememberScrollState())
-        ) {
-            Ticket(
-                order = previewOrders[0],
-                storeName = "Done Store",
-                localizedContext = LocalContext.current,
-                printTwo = false,
-            )
-        }
-    }
-}
+//@Preview
+//@Composable
+//private fun ReceiptLayoutPreview() {
+//    DoneTheme {
+//        Column(
+//            modifier = Modifier
+//                .background(Color.White)
+//                .verticalScroll(rememberScrollState())
+//        ) {
+//            Ticket(
+//                order = previewOrders[0],
+//                storeName = "Done Store",
+//                localizedContext = LocalContext.current,
+//                printTwo = false,
+//            )
+//        }
+//    }
+//}

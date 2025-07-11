@@ -77,6 +77,9 @@ konnectivity = "0.1-alpha01"
 # Datetime
 kotlinx-datetime = "0.7.0"
 
+# Coil
+coil3 = "3.1.0"
+
 [libraries]
 # Kotlin
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
@@ -160,7 +163,6 @@ moko-permissions-compose = { module = "dev.icerock.moko:permissions-compose", ve
 printerx = { module = "com.sunmi:printerx", version.ref = "printerx" }
 pushy = { module = "me.pushy:sdk", version.ref = "pushy" }
 konnectivity = { module = "com.plusmobileapps:konnectivity", version.ref = "konnectivity" }
-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 
 # Datetime
 jetbrains-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
@@ -170,6 +172,13 @@ android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", ver
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+
+# Coil
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
+coil-network-ktor2 = { module = "io.coil-kt.coil3:coil-network-ktor2", version.ref = "coil3" }
+coil-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil3" }
+coil-mp = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
 
 [plugins]
 # Application/Library Plugins
@@ -220,6 +229,14 @@ ktor = [
     "ktor-client-core",
     "ktor-client-serialization-json",
     "ktor-client-logging",
+]
+# Coils Bundles
+coil = [
+    "coil-compose",
+    "coil-compose-core",
+    "coil-network-ktor2",
+    "coil-network-ktor3",
+    "coil-mp"
 ]
 
 # Testing Bundles

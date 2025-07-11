@@ -19,7 +19,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -44,7 +43,6 @@ fun LoginScreenCore(
     onRestartApp: () -> Unit
 ) {
 
-    val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -58,7 +56,6 @@ fun LoginScreenCore(
                 keyboardController?.hide()
                 networkErrorToast(
                     networkError = event.error,
-                    context = context,
                 )
             }
 
@@ -90,8 +87,7 @@ fun LoginScreen(
 ) {
     DoneScaffold { paddingValues ->
         Column(
-            modifier = Modifier
-                .padding(paddingValues)
+            modifier = padding(paddingValues)
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.primary),
             horizontalAlignment = Alignment.CenterHorizontally,

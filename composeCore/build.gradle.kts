@@ -88,6 +88,9 @@ kotlin {
                 // Serialization
                 api(libs.kotlinx.serialization.json)
 
+                // Coil
+                api(libs.bundles.coil)
+
             }
         }
 

@@ -52,7 +52,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.done.partner.domain.models.customer.Customer
 import com.done.partner.domain.models.driver.Driver
 import com.done.partner.domain.models.orders.Order
@@ -72,6 +72,7 @@ import com.done.core.presentation.core.ui.components.networkErrorToast
 import com.done.core.presentation.core.ui.theme.DoneTheme
 import com.done.core.presentation.core.ui.theme.doneGreen
 import com.done.core.presentation.core.ui.theme.doneOrange
+import com.done.core.presentation.core.util.provideInternetConnectionHandler
 import com.done.partner.presentation.core.components.DeliveryCodeDialog
 import com.done.partner.presentation.core.components.ScreenShootTicket
 import com.done.partner.presentation.core.components.createBitmapBytesFromPicture
@@ -104,9 +105,9 @@ fun OrderDetailsScreenCore(
         )
     }
 
-    val context = LocalContext.current
     var showNoInternetDialog by remember { mutableStateOf(false) }
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val connectionHandler = provideInternetConnectionHandler()
 
     ObserveAsEvent(viewModel.event) { event ->
         when (event) {
@@ -115,7 +116,6 @@ fun OrderDetailsScreenCore(
             is OrderDetailsEvent.Error -> {
                 networkErrorToast(
                     networkError = event.networkError,
-                    context = context,
                 )
 
                 if (event.networkError?.name == NetworkErrorName.NO_INTERNET_ERROR) {
@@ -147,10 +147,7 @@ fun OrderDetailsScreenCore(
                     style = MaterialTheme.typography.bodyLarge,
                     verticalPadding = 4.dp,
                     onClick = {
-                        val intent = Intent(Settings.ACTION_WIFI_SETTINGS).apply {
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                        }
-                        context.startActivity(intent)
+                        connectionHandler.openConnectionSettings()
                     },
                     modifier = Modifier.weight(1f)
                 )

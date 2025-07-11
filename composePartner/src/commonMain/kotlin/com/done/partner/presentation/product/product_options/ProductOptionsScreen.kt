@@ -48,10 +48,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.done.partner.domain.models.price.Price
 import com.done.partner.domain.models.product.product_option.ProductOption
 import com.done.core.presentation.core.design_system.DoneOutlinedButton
@@ -79,14 +78,11 @@ fun ProductOptionsScreenCore(
         viewModel.onAction(ProductOptionsAction.OnReload(productId))
     }
 
-    val context = LocalContext.current
-
     ObserveAsEvent(viewModel.event) { event ->
         when (event) {
             is OptionsEvent.Error -> {
                 networkErrorToast(
                     networkError = event.networkError,
-                    context = context,
                 )
             }
         }

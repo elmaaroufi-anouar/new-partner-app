@@ -17,9 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.done.app.util.provideInternetConnectionHandler
 import com.done.core.presentation.core.design_system.DoneButton
-import com.done.partner.R
+import com.done.core.presentation.core.util.provideInternetConnectionHandler
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -34,7 +33,7 @@ fun NoInternetView() {
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.image_error_internet),
+            painter = painterResource(Res.drawable.image_error_internet),
             contentDescription = null,
             modifier = Modifier.width(150.dp),
         )
@@ -42,7 +41,7 @@ fun NoInternetView() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = stringResource(com.done.core.R.string.make_sure_you_have_a_valid_internet_connection),
+            text = stringResource(com.done.core.Res.string.make_sure_you_have_a_valid_internet_connection),
             style = MaterialTheme.typography.titleSmall.copy(
                 fontWeight = FontWeight.Medium
             ),
@@ -53,7 +52,7 @@ fun NoInternetView() {
         Spacer(modifier = Modifier.height(16.dp))
 
         DoneButton(
-            text = stringResource(R.string.activate_internet),
+            text = stringResource(Res.string.activate_internet),
             verticalPadding = 8.dp,
             onClick = {
                 connectionHandler.openConnectionSettings()

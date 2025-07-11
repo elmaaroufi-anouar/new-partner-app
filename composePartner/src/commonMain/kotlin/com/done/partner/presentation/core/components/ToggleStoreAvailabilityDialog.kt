@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.done.core.presentation.core.design_system.DoneButton
-import com.done.core.presentation.core.ui.theme.DoneTheme
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -57,7 +56,7 @@ fun ToggleStoreAvailabilityDialog(
             ) {
                 Image(
                     modifier = Modifier.size(60.dp),
-                    painter = painterResource(R.drawable.store),
+                    painter = painterResource(Res.drawable.store),
                     contentDescription = null
                 )
             }
@@ -66,9 +65,9 @@ fun ToggleStoreAvailabilityDialog(
 
             Text(
                 text = if (isStoreOpen) {
-                    stringResource(R.string.close_your_store)
+                    stringResource(Res.string.close_your_store)
                 } else {
-                    stringResource(R.string.ready_to_open_you_store)
+                    stringResource(Res.string.ready_to_open_you_store)
                 },
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.SemiBold

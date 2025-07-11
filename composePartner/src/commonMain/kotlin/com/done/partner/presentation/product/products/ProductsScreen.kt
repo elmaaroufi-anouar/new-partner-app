@@ -22,7 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.done.partner.domain.models.product.Product
 import com.done.core.presentation.core.design_system.*
 import com.done.core.presentation.core.ui.components.ObserveAsEvent

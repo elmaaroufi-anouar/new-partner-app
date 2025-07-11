@@ -1,11 +1,6 @@
 package com.done.partner.presentation.core.components
 
-import android.annotation.SuppressLint
-import android.content.Context
-import android.content.res.Configuration
 import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Picture
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,98 +11,39 @@ import androidx.compose.material.icons.outlined.Store
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.draw
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.createBitmap
 import com.done.core.domain.models.language.LanguageCodes
 import com.done.partner.domain.models.orders.Order
 import com.done.partner.domain.services.print.formatDate
 import com.done.partner.domain.services.print.getTimeAfterMinutes
 import com.done.partner.domain.util.Printer
-import java.io.ByteArrayOutputStream
-import java.util.*
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
-@SuppressLint("LocalContextConfigurationRead")
 @Composable
-fun ScreenShootTicket(
+expect fun ScreenShootTicket(
     order: Order,
     printLang: String? = LanguageCodes.FR,
-    storeName: String?,
-    printTwo: Boolean,
-    picture: Picture
-) {
-    val context = LocalContext.current
-    Column(
-        modifier = Modifier
-            .background(Color.White)
-            .fillMaxSize()
-            .drawWithCache {
-                val width = this.size.width.toInt()
-                val height = this.size.height.toInt()
-                onDrawWithContent {
-                    val pictureCanvas =
-                        androidx.compose.ui.graphics.Canvas(
-                            picture.beginRecording(
-                                width, height
-                            )
-                        )
-                    draw(this, this.layoutDirection, pictureCanvas, this.size) {
-                        this@onDrawWithContent.drawContent()
-                    }
-                    picture.endRecording()
+    storeName: String? = null,
+    printTwo: Boolean = false,
+    onPictureReady: (ByteArray) -> Unit = {}
+)
 
-                    drawIntoCanvas { canvas ->
-                        canvas.nativeCanvas.drawPicture(picture)
-                    }
-                }
-            }
-    ) {
-        val configuration = remember(printLang) {
-            Configuration(context.resources.configuration).apply {
-                setLocale(
-                    when (printLang) {
-                        LanguageCodes.EN -> Locale.ENGLISH
-                        LanguageCodes.AR -> Locale("ar")
-                        else -> Locale.FRANCE
-                    }
-                )
-            }
-        }
-
-        val localizedContext = remember(configuration) {
-            context.createConfigurationContext(configuration)
-        }
-
-        CompositionLocalProvider(LocalContext provides localizedContext) {
-            Ticket(
-                order = order,
-                storeName = storeName,
-                localizedContext = localizedContext,
-                printTwo = printTwo
-            )
-        }
-    }
-}
-
+@OptIn(ExperimentalTime::class)
 @Composable
 fun Ticket(
     order: Order,
-    localizedContext: Context,
     storeName: String?,
     printTwo: Boolean,
 ) {
@@ -121,7 +57,7 @@ fun Ticket(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.logo_black),
+            painter = painterResource(Res.drawable.logo_black),
             contentDescription = null,
             contentScale = ContentScale.FillWidth,
             modifier = Modifier
@@ -133,14 +69,14 @@ fun Ticket(
 
         if (!printTwo) {
             Text(
-                localizedContext.getString(R.string.duplicated),
+                stringResource(Res.string.duplicated),
                 fontSize = fontSize(),
                 fontWeight = FontWeight.Medium
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            localizedContext.getString(R.string.pickup_code),
+            stringResource(Res.string.pickup_code),
             fontSize = fontSize(),
             fontWeight = fontWeight
         )
@@ -174,7 +110,7 @@ fun Ticket(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                "${localizedContext.getString(R.string.estimated_pickup_time)} ${order.deliveryEstimationInMin.getTimeAfterMinutes()}",
+                "${stringResource(Res.string.estimated_pickup_time)} ${order.deliveryEstimationInMin.getTimeAfterMinutes()}",
                 textAlign = TextAlign.Center,
                 fontSize = fontSize(4),
                 fontWeight = fontWeight,
@@ -297,7 +233,7 @@ fun Ticket(
                     Spacer(Modifier.width(10.dp))
 
                     Text(
-                        text = localizedContext.getString(R.string.customer_request),
+                        text = stringResource(Res.string.customer_request),
                         fontSize = fontSize(4),
                         fontStyle = FontStyle.Italic,
                         fontWeight = fontWeight
@@ -320,7 +256,7 @@ fun Ticket(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    localizedContext.getString(R.string.total),
+                    stringResource(Res.string.total),
                     fontSize = fontSize(13),
                     fontWeight = fontWeight
                 )
@@ -334,14 +270,14 @@ fun Ticket(
             Spacer(modifier = Modifier.height(28.dp))
 
             Text(
-                System.currentTimeMillis().formatDate(),
+                Clock.System.now().toEpochMilliseconds().formatDate(),
                 fontSize = fontSize(3),
                 fontWeight = fontWeight
             )
             Spacer(modifier = Modifier.height(38.dp))
 
             Text(
-                localizedContext.getString(R.string.made_with_in_morocco),
+                stringResource(Res.string.made_with_in_morocco),
                 fontSize = fontSize(3),
                 fontWeight = fontWeight,
                 modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -383,7 +319,6 @@ fun VerticalStars(
         }
     }
 }
-
 
 //@Preview
 //@Composable

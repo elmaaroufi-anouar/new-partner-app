@@ -34,7 +34,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -69,7 +68,7 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Previewes
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -87,7 +86,6 @@ fun OrderListScreenCore(
         viewModel.onAction(OrderListAction.OnStopFetchingOrderList)
     }
 
-    val context = LocalContext.current
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     ObserveAsEvent(viewModel.event) { event ->
@@ -95,7 +93,6 @@ fun OrderListScreenCore(
             is OrderListEvent.Error -> {
                 networkErrorToast(
                     networkError = event.networkError,
-                    context = context
                 )
             }
 
@@ -111,8 +108,10 @@ fun OrderListScreenCore(
 
     val orderToPrint = remember { mutableStateOf<Order?>(null) }
     val scope = rememberCoroutineScope()
-    var picture = remember { Picture() }
     var isCapturing by remember { mutableStateOf(false) }
+
+    var picture: ByteArray = remember { byteArrayOf() }
+
     if (isCapturing && orderToPrint.value != null) {
         Column(
             modifier = Modifier
@@ -123,8 +122,10 @@ fun OrderListScreenCore(
                 order = orderToPrint.value!!,
                 printLang = state.printLangCode,
                 storeName = state.selectedStore?.storeBrand?.name,
-                picture = picture,
-                printTwo = true
+                printTwo = true,
+                onPictureReady = { bytes ->
+                    picture = bytes
+                }
             )
         }
     }
@@ -141,26 +142,26 @@ fun OrderListScreenCore(
                     openFirebaseDistribution(context, state.updateUrl)
                 }
 
-                is OrderListAction.OnAcceptOrder -> {
+                is OrderListAction.OnAcceptOrder -> { // This is not used in the UI
                     scope.launch {
                         orderToPrint.value = action.order
                         isCapturing = true
                         try {
                             delay(500)
-                            viewModel.onAction(OrderListAction.OnPrintOrder(createBitmapBytesFromPicture(picture)))
+                            viewModel.onAction(OrderListAction.OnPrintOrder(picture))
                         } catch (_: Exception) {
                             try {
                                 delay(500)
-                                viewModel.onAction(OrderListAction.OnPrintOrder(createBitmapBytesFromPicture(picture)))
+                                viewModel.onAction(OrderListAction.OnPrintOrder(picture))
                             } catch (e: Exception) {
                                 e.printStackTrace()
                             }
                         }
                         isCapturing = false
                         orderToPrint.value = null
-                        picture = Picture()
                     }
                     viewModel.onAction(action)
+                    picture = byteArrayOf() // Reset picture after printing
                 }
 
                 else -> viewModel.onAction(action)
@@ -439,13 +440,13 @@ fun PaginatedLazyColumn(
 }
 
 
-@Preview
-@Composable
-private fun OrdersScreenPreview() {
-    DoneTheme {
-        OrderListScreen(
-            state = OrderListState(),
-            onAction = {}
-        )
-    }
-}
+//@Preview
+//@Composable
+//private fun OrdersScreenPreview() {
+//    DoneTheme {
+//        OrderListScreen(
+//            state = OrderListState(),
+//            onAction = {}
+//        )
+//    }
+//}

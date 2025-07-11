@@ -155,10 +155,11 @@ fun OrderDetailsScreenCore(
         )
     }
 
-    val picture = remember { Picture() }
     var isCapturing by remember { mutableStateOf(false) }
     var printTwo by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+
+    var picture = remember { byteArrayOf() }
 
     state.order?.let {
         if (isCapturing) {
@@ -171,8 +172,10 @@ fun OrderDetailsScreenCore(
                     order = it,
                     printLang = state.printLangCode,
                     storeName = state.storeName,
-                    picture = picture,
-                    printTwo = printTwo
+                    printTwo = printTwo,
+                    onPictureReady = { bytes ->
+                        picture = bytes
+                    }
                 )
             }
         }
@@ -194,11 +197,11 @@ fun OrderDetailsScreenCore(
                         printTwo = action.printTwo
                         try {
                             delay(500)
-                            viewModel.onAction(OrderDetailsAction.OnPrintOrder(createBitmapBytesFromPicture(picture), printTwo))
+                            viewModel.onAction(OrderDetailsAction.OnPrintOrder(picture, printTwo))
                         } catch (_: Exception) {
                             try {
                                 delay(500)
-                                viewModel.onAction(OrderDetailsAction.OnPrintOrder(createBitmapBytesFromPicture(picture), printTwo))
+                                viewModel.onAction(OrderDetailsAction.OnPrintOrder(picture, printTwo))
                             } catch (e: Exception) {
                                 e.printStackTrace()
                             }
@@ -734,7 +737,7 @@ fun OrderDetailsCustomer(
     }
 }
 
-@SuppressLint("DefaultLocale")
+
 @Composable
 fun TotalPrices(
     order: Order
@@ -781,7 +784,7 @@ fun TotalPrices(
         )
 
         Text(
-            text = String.format("%.2f", order.vat),
+            text = formatVat(order.vat),
             style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Medium
             ),
@@ -961,6 +964,8 @@ fun OrderDetailsItemOptionContent(
 
     }
 }
+
+fun formatVat(vat: Double): String = (Math.round(vat * 100) / 100.0).toString()
 
 @Preview
 @Composable

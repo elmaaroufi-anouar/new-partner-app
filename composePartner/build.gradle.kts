@@ -40,7 +40,7 @@ kotlin {
             baseName = xcfName
         }
     }
-    jvm("desktop")
+//    jvm("desktop")
 
 // Source set declarations.
 // Declaring a target automatically creates a source set with the same name. By default, the
@@ -48,7 +48,7 @@ kotlin {
 // common to share sources between related targets.
 // See: https://kotlinlang.org/docs/multiplatform-hierarchy.html
     sourceSets {
-        val desktopMain by getting
+//        val desktopMain by getting
 
         commonMain {
             dependencies {
@@ -99,9 +99,9 @@ kotlin {
             }
         }
 
-        desktopMain.dependencies {
-            // desktop dependencies
-        }
+//        desktopMain.dependencies {
+//            // desktop dependencies
+//        }
     }
 
 }

@@ -1,7 +1,5 @@
 package com.done.app.components
 
-import android.content.Intent
-import android.provider.Settings
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,18 +14,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.done.app.util.provideInternetConnectionHandler
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.partner.R
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun NoInternetView() {
-    val context = LocalContext.current
+
+    val connectionHandler = provideInternetConnectionHandler()
+
     Column(
         modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -56,10 +56,7 @@ fun NoInternetView() {
             text = stringResource(R.string.activate_internet),
             verticalPadding = 8.dp,
             onClick = {
-                val intent = Intent(Settings.ACTION_WIFI_SETTINGS).apply {
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                }
-                context.startActivity(intent)
+                connectionHandler.openConnectionSettings()
             },
             modifier = Modifier.fillMaxWidth()
         )

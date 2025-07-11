@@ -10,10 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.done.partner.R
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun DisableProductsFab(
@@ -33,7 +32,7 @@ fun DisableProductsFab(
             containerColor = MaterialTheme.colorScheme.primary
         ) {
             Text(
-                text = stringResource(R.string.disable),
+                text = stringResource(Res.string.disable),
                 color = MaterialTheme.colorScheme.onPrimary,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontWeight = FontWeight.Medium

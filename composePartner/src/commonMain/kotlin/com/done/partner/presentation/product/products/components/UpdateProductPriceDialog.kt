@@ -31,6 +31,7 @@ import com.done.partner.R
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.design_system.DoneTextField
 import com.done.partner.presentation.product.products.ProductsState
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun UpdateProductPriceDialog(
@@ -63,7 +64,7 @@ fun UpdateProductPriceDialog(
 
                 Icon(
                     imageVector = Icons.Default.Close,
-                    contentDescription = stringResource(R.string.close),
+                    contentDescription = stringResource(Res.string.close),
                     modifier = Modifier
                         .size(30.dp)
                         .clickable { onDismiss() }
@@ -72,7 +73,7 @@ fun UpdateProductPriceDialog(
                 Spacer(Modifier.width(12.dp))
 
                 Text(
-                    text = stringResource(R.string.edit_product_price),
+                    text = stringResource(Res.string.edit_product_price),
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.SemiBold
                     )
@@ -91,7 +92,7 @@ fun UpdateProductPriceDialog(
             Spacer(Modifier.height(26.dp))
 
             DoneButton(
-                text = stringResource(R.string.save),
+                text = stringResource(Res.string.save),
                 onClick = { onSave() },
                 isLoading = state.isUpdatingProductPrice,
                 style = MaterialTheme.typography.bodyLarge,
@@ -101,7 +102,7 @@ fun UpdateProductPriceDialog(
             Spacer(Modifier.height(16.dp))
 
             Text(
-                text = stringResource(R.string.cancel),
+                text = stringResource(Res.string.cancel),
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .alpha(if (state.isUpdatingProductPrice) 0f else 1f)

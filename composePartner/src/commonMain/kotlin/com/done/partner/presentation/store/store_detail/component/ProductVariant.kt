@@ -19,13 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.done.partner.domain.models.cart.CartProduct
-import com.done.partner.R
 import com.done.partner.presentation.store.store_detail.StoreDetailAction
 import org.jetbrains.compose.resources.painterResource
 
@@ -114,7 +112,7 @@ fun ProductVariant(
                         )
                 }, contentPadding = PaddingValues()) {
                     Image(
-                        painter = painterResource(R.drawable.ic_moin_primary),
+                        painter = painterResource(Res.drawable.ic_moin_primary),
                         contentDescription = null,
                         modifier = Modifier.size(32.dp),
                     )
@@ -129,7 +127,7 @@ fun ProductVariant(
                         )
                 }, contentPadding = PaddingValues()) {
                     Image(
-                        painter = painterResource(R.drawable.ic_plus_primary),
+                        painter = painterResource(Res.drawable.ic_plus_primary),
                         contentDescription = null,
                         modifier = Modifier.size(32.dp),
                     )

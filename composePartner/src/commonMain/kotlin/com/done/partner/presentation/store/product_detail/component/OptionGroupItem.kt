@@ -1,6 +1,5 @@
 package com.done.partner.presentation.store.product_detail.component
 
-import com.done.partner.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,8 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -70,10 +67,10 @@ fun OptionGroupItem(
             Text(
                 text = if (productOptionGroup.maxOptions > 1) {
                     stringResource(
-                        R.string.choose_a_maximum_of_products, productOptionGroup.maxOptions
+                        Res.string.choose_a_maximum_of_products, productOptionGroup.maxOptions
                     )
                 } else {
-                    stringResource(R.string.choose_one)
+                    stringResource(Res.string.choose_one)
                 },
                 style = MaterialTheme.typography.bodyMedium.copy(
                     fontWeight = FontWeight.Normal
@@ -88,7 +85,7 @@ fun OptionGroupItem(
 
             if (productOptionGroup.isRequired) {
                 Text(
-                    text = stringResource(R.string.required),
+                    text = stringResource(Res.string.required),
                     style = MaterialTheme.typography.labelMedium.copy(
                         fontWeight = FontWeight.Normal
                     ),
@@ -161,9 +158,9 @@ fun OptionGroupItem(
 
                                 Image(
                                     painter = if (isOptionSelected) painterResource(
-                                        R.drawable.radio_button_checked
+                                        Res.drawable.radio_button_checked
                                     )
-                                    else painterResource(R.drawable.ic_radio_button),
+                                    else painterResource(Res.drawable.ic_radio_button),
                                     contentDescription = null,
                                     modifier = Modifier.size(34.dp),
                                     colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
@@ -231,9 +228,9 @@ fun OptionGroupItem(
 
                                 Image(
                                     painter = if (state.checkedItems[option.id] == true) painterResource(
-                                        R.drawable.ic_checkbox_checked
+                                        Res.drawable.ic_checkbox_checked
                                     )
-                                    else painterResource(R.drawable.ic_checkbox),
+                                    else painterResource(Res.drawable.ic_checkbox),
                                     contentDescription = null,
                                     modifier = Modifier.size(34.dp),
                                     colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {

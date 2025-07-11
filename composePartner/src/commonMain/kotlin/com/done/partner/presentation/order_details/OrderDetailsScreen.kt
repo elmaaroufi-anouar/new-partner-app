@@ -75,13 +75,13 @@ import com.done.core.presentation.core.ui.theme.doneOrange
 import com.done.core.presentation.core.util.provideInternetConnectionHandler
 import com.done.partner.presentation.core.components.DeliveryCodeDialog
 import com.done.partner.presentation.core.components.ScreenShootTicket
-import com.done.partner.presentation.core.components.createBitmapBytesFromPicture
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.math.round
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -965,7 +965,7 @@ fun OrderDetailsItemOptionContent(
     }
 }
 
-fun formatVat(vat: Double): String = (Math.round(vat * 100) / 100.0).toString()
+fun formatVat(vat: Double): String = (round(vat * 100) / 100.0).toString()
 
 @Preview
 @Composable

@@ -1,6 +1,5 @@
 package com.done.partner.presentation.product.products
 
-import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,7 +18,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
@@ -53,14 +51,11 @@ fun ProductsScreenCore(
         viewModel.onAction(ProductsAction.OnReload)
     }
 
-    val context = LocalContext.current
-
     ObserveAsEvent(viewModel.event) { event ->
         when (event) {
             is ProductsEvent.Error -> {
                 networkErrorToast(
                     networkError = event.networkError,
-                    context = context,
                 )
             }
         }
@@ -74,10 +69,7 @@ fun ProductsScreenCore(
                     if (action.hasOptions) {
                         onProductClick(action.productId)
                     } else {
-                        Toast.makeText(
-                            context,
-                            context.getString(R.string.this_product_has_no_options), Toast.LENGTH_SHORT
-                        ).show()
+                        showToast(message = Res.string.this_product_has_no_options)
                     }
                 }
                 else -> viewModel.onAction(action)
@@ -412,6 +404,9 @@ private fun ProductItem(
         }
     }
 }
+
+@Composable
+expect fun showToast(message: String)
 
 @Preview
 @Composable

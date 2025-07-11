@@ -1,6 +1,5 @@
 package com.done.partner.presentation.settings.components
 
-import android.graphics.Picture
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -26,15 +25,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.done.core.domain.models.language.LanguageCodes
 import com.done.core.presentation.core.design_system.DoneOutlinedButton
 import com.done.core.presentation.core.ui.theme.doneGreen
-import com.done.partner.R
 import com.done.partner.domain.util.PrinterType
-import com.done.partner.presentation.core.components.createBitmapBytesFromPicture
 import com.done.partner.presentation.settings.SettingsActions
 import com.done.partner.presentation.settings.SettingsState
 import kotlinx.coroutines.delay
@@ -47,7 +43,7 @@ fun PrinterSettingsDialog(
     modifier: Modifier = Modifier,
     state: SettingsState,
     onAction: (SettingsActions) -> Unit,
-    picture: Picture,
+    picture: ByteArray,
     onToggleCapturing: (Boolean) -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -65,7 +61,7 @@ fun PrinterSettingsDialog(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = stringResource(R.string.printer),
+                text = stringResource(Res.string.printer),
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.SemiBold
@@ -95,7 +91,7 @@ fun PrinterSettingsDialog(
         Spacer(Modifier.size(8.dp))
 
         Text(
-            text = stringResource(R.string.type),
+            text = stringResource(Res.string.type),
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontWeight = FontWeight.Medium
@@ -109,7 +105,7 @@ fun PrinterSettingsDialog(
         ) {
             PrinterSettingRadio(
                 selected = state.printerType == PrinterType.SUNMI,
-                text = stringResource(R.string.sunmi),
+                text = stringResource(Res.string.sunmi),
                 onSelect = {
                     onAction(SettingsActions.OnSelectPrinterType(PrinterType.SUNMI))
                 }
@@ -117,7 +113,7 @@ fun PrinterSettingsDialog(
             Spacer(Modifier.size(8.dp))
             PrinterSettingRadio(
                 selected = state.printerType == PrinterType.LANDI,
-                text = stringResource(R.string.landi_m20),
+                text = stringResource(Res.string.landi_m20),
                 onSelect = {
                     onAction(SettingsActions.OnSelectPrinterType(PrinterType.LANDI))
                 }
@@ -125,7 +121,7 @@ fun PrinterSettingsDialog(
             Spacer(Modifier.size(8.dp))
             PrinterSettingRadio(
                 selected = state.printerType == PrinterType.ALPS,
-                text = stringResource(R.string.alps_q6),
+                text = stringResource(Res.string.alps_q6),
                 onSelect = {
                     onAction(SettingsActions.OnSelectPrinterType(PrinterType.ALPS))
                 }
@@ -135,7 +131,7 @@ fun PrinterSettingsDialog(
         Spacer(Modifier.size(22.dp))
 
         Text(
-            text = stringResource(R.string.language),
+            text = stringResource(Res.string.language),
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodyLarge.copy(
                 fontWeight = FontWeight.Medium
@@ -152,7 +148,7 @@ fun PrinterSettingsDialog(
         ) {
             PrinterSettingRadio(
                 selected = state.printLangCode == LanguageCodes.FR,
-                text = stringResource(R.string.french),
+                text = stringResource(Res.string.french),
                 onSelect = {
                     onAction(SettingsActions.OnChangePrintLang(LanguageCodes.FR))
                 }
@@ -160,7 +156,7 @@ fun PrinterSettingsDialog(
             Spacer(Modifier.size(8.dp))
             PrinterSettingRadio(
                 selected = state.printLangCode == LanguageCodes.EN,
-                text = stringResource(R.string.english),
+                text = stringResource(Res.string.english),
                 onSelect = {
                     onAction(SettingsActions.OnChangePrintLang(LanguageCodes.EN))
                 }
@@ -168,7 +164,7 @@ fun PrinterSettingsDialog(
             Spacer(Modifier.size(8.dp))
             PrinterSettingRadio(
                 selected = state.printLangCode == LanguageCodes.AR,
-                text = stringResource(R.string.arabic),
+                text = stringResource(Res.string.arabic),
                 onSelect = {
                     onAction(SettingsActions.OnChangePrintLang(LanguageCodes.AR))
                 }
@@ -184,13 +180,13 @@ fun PrinterSettingsDialog(
                     try {
                         delay(500)
                         onAction(
-                            SettingsActions.OnTestPrinter(createBitmapBytesFromPicture(picture))
+                            SettingsActions.OnTestPrinter(picture)
                         )
                     } catch (e: Exception) {
                         try {
                             delay(500)
                             onAction(
-                                SettingsActions.OnTestPrinter(createBitmapBytesFromPicture(picture))
+                                SettingsActions.OnTestPrinter(picture)
                             )
                         } catch (e: Exception) {
                             e.printStackTrace()
@@ -215,7 +211,7 @@ fun PrinterSettingsDialog(
                     )
                     Spacer(Modifier.width(10.dp))
                     Text(
-                        text = stringResource(R.string.test_printer),
+                        text = stringResource(Res.string.test_printer),
                         color = MaterialTheme.colorScheme.primary,
                         style = MaterialTheme.typography.bodyMedium.copy(
                             fontWeight = FontWeight.SemiBold

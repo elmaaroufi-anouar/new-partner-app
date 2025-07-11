@@ -1,6 +1,5 @@
 package com.done.partner.presentation.settings
 
-import android.graphics.Picture
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -192,7 +191,7 @@ private fun SettingsScreen(
                 onDismiss = {
                     isLogoutDialog = null
                     isDialogShowing = false
-                },es
+                },
                 onConfirm = {
                     isLogoutDialog = null
                     isDialogShowing = false
@@ -210,7 +209,7 @@ fun SettingsSection(
     state: SettingsState,
     onAction: (SettingsActions) -> Unit
 ) {
-    val picture = remember { Picture() }
+    val picture = remember { byteArrayOf() }
     var isCapturing by remember { mutableStateOf(false) }
     var isPrinterSettingsDialogShown by remember { mutableStateOf(false) }
 
@@ -274,8 +273,8 @@ fun SettingsSection(
                 order = previewOrders[0],
                 printLang = state.printLangCode,
                 storeName = "Done Store",
-                picture = picture,
-                printTwo = false
+                printTwo = false,
+                onPictureReady = { picture = it },
             )
         }
     }

@@ -58,14 +58,14 @@ fun ProductItem(
                         .clip(RoundedCornerShape(12.dp))
                         .background(color = MaterialTheme.colorScheme.onBackground.copy(0.3f)),
                     contentScale = ContentScale.Crop,
-                    placeholder = painterResource(R.drawable.product_placeholder),
-                    error = painterResource(R.drawable.product_placeholder),
+                    placeholder = painterResource(Res.drawable.product_placeholder),
+                    error = painterResource(Res.drawable.product_placeholder),
                 )
 
                 if (isAddButtonShown) {
                     if (product.optionGroups.isNotEmpty()) {
                         Image(
-                            painter = painterResource(R.drawable.ic_add_product),
+                            painter = painterResource(Res.drawable.ic_add_product),
                             contentDescription = null,
                             modifier = Modifier
                                 .padding(5.dp)
@@ -76,7 +76,7 @@ fun ProductItem(
                     } else {
                         if (cartProducts?.isEmpty() == true || cartProducts?.get(0)?.quantity == 0) {
                             Image(
-                                painter = painterResource(R.drawable.ic_add_product),
+                                painter = painterResource(Res.drawable.ic_add_product),
                                 contentDescription = null,
                                 modifier = Modifier
                                     .padding(5.dp)

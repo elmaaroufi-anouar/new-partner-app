@@ -21,13 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import com.done.partner.R
 import com.done.core.presentation.core.design_system.DoneButton
 import com.done.core.presentation.core.design_system.DoneTextField
 import com.done.partner.presentation.product.product_options.ProductOptionsState
@@ -64,7 +62,7 @@ fun UpdateOptionPriceDialog(
 
                 Icon(
                     imageVector = Icons.Default.Close,
-                    contentDescription = stringResource(R.string.close),
+                    contentDescription = stringResource(Res.string.close),
                     modifier = Modifier
                         .size(30.dp)
                         .clickable { onDismiss() }
@@ -73,7 +71,7 @@ fun UpdateOptionPriceDialog(
                 Spacer(Modifier.width(12.dp))
 
                 Text(
-                    text = stringResource(R.string.edit_product_price),
+                    text = stringResource(Res.string.edit_product_price),
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.SemiBold
                     )
@@ -92,7 +90,7 @@ fun UpdateOptionPriceDialog(
             Spacer(Modifier.height(26.dp))
 
             DoneButton(
-                text = stringResource(R.string.save),
+                text = stringResource(Res.string.save),
                 onClick = { onSave() },
                 isLoading = state.isUpdatingOptionPrice,
                 style = MaterialTheme.typography.bodyLarge,
@@ -102,7 +100,7 @@ fun UpdateOptionPriceDialog(
             Spacer(Modifier.height(16.dp))
 
             Text(
-                text = stringResource(R.string.cancel),
+                text = stringResource(Res.string.cancel),
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .alpha(if (state.isUpdatingOptionPrice) 0f else 1f)

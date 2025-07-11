@@ -37,7 +37,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -47,6 +46,7 @@ import com.done.core.presentation.core.design_system.DoneTopBar
 import com.done.core.presentation.core.ui.components.ObserveAsEvent
 import com.done.core.presentation.core.ui.components.OnResumeCompose
 import com.done.core.presentation.core.ui.components.networkErrorToast
+import com.done.partner.presentation.product.products.showToast
 import com.done.partner.presentation.store.product_detail.ProductDetailSheetRoot
 import com.done.partner.presentation.store.store_detail.component.ProductInlineItem
 import com.done.partner.presentation.store.store_detail.component.ShadowDivider
@@ -62,7 +62,6 @@ fun StoreDetailScreenRoot(
     onBackClick: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
-    val context = LocalContext.current
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
 
@@ -72,9 +71,7 @@ fun StoreDetailScreenRoot(
                 networkErrorToast(context = context, networkError = event.networkError)
             }
             StoreDetailEvent.OrderUpdated -> {
-                Toast.makeText(
-                    context, context.getString(Res.string.order_updated), Toast.LENGTH_SHORT
-                ).show()
+                showToast(message = Res.string.order_updated)
                 onBackClick()
             }
 

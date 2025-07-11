@@ -128,6 +128,9 @@ kotlin {
 
                 // Pushy
                 implementation(libs.pushy)
+
+                // Kotlin Reflection
+                api(kotlin("reflect"))
             }
         }
 

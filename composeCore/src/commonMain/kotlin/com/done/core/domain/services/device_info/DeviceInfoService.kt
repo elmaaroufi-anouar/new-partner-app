@@ -28,5 +28,6 @@ interface DeviceInfoService {
     fun isBatteryStateBad(): Boolean
 
     fun isFakingLocation(): Boolean
+    fun getReleaseVersion(): String
 }
 

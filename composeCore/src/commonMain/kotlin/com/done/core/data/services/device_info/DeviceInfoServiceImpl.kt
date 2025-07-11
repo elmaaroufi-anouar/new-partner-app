@@ -18,4 +18,5 @@ expect class DeviceInfoServiceImpl : DeviceInfoService {
     override fun canObserverLocation(): Boolean
     override fun isBatteryStateBad(): Boolean
     override fun isFakingLocation(): Boolean
+    override fun getReleaseVersion(): String
 }

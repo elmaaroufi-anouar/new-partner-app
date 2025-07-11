@@ -29,7 +29,7 @@
     <string name="price">السعر</string>
     <string name="unselect_products">إلغاء تحديد المنتجات</string>
     <string name="disable">تعطيل</string>
-    <string name="disable_products_for">تعطيل المنتجات لمدة:</string>
+    <string name="disable_products">تعطيل المنتجات</string>
     <string name="how_far_would_you_like_to_disable_the_product">إلى متى ترغب في تعطيل المنتج؟</string>
     <string name="how_far_would_you_like_to_disable_the_products">إلى متى ترغب في تعطيل المنتجات؟</string>
     <string name="cancel">إلغاء</string>
@@ -127,6 +127,7 @@
     <string name="printer">الطابعة</string>
     <string name="sunmi">Sunmi</string>
     <string name="alps_q6">Alps Q6Pro</string>
+    <string name="landi_m20">Landi M20</string>
     <string name="test_printer">اختبار الطابعة</string>
     <string name="updating_play_services">جارٍ تحديث خدمات Google Play…</string>
     <string name="please_don_t_close_the_app">يرجى عدم إغلاق التطبيق،\nقد يستغرق الأمر دقيقتين.</string>
@@ -142,4 +143,12 @@
     <string name="couldn_t_load_product">تعذر تحميل المنتج</string>
     <string name="options">الخيارات</string>
     <string name="this_product_has_no_options">هذا المنتج لا يحتوي على خيارات</string>
+    <string name="unknown">غير معروف</string>
+    <string name="disable_battery_optimizations">إقاف تحسينات البطارية</string>
+    <string name="_1_hour">ساعة واحدة</string>
+    <string name="_2_hours">ساعتان</string>
+    <string name="_3_hours">3 ساعات</string>
+    <string name="_4_hours">4 ساعات</string>
+    <string name="_1_day">يوم واحد</string>
+    <string name="until_i_enable_them">حتى أقوم بتفعيلهم</string>
 </resources>

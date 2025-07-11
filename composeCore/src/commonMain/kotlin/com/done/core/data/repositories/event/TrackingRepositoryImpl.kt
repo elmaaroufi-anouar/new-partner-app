@@ -1,6 +1,5 @@
 package com.done.core.data.repositories.event
 
-import android.os.Build
 import com.done.core.BuildConfig
 import com.done.core.data.dto.event.toTrackingEventDto
 import com.done.core.data.services.api.KtorApiService
@@ -12,6 +11,8 @@ import com.done.core.domain.services.auth_response.AuthResponseService
 import com.done.core.domain.services.device_info.DeviceInfoService
 import com.done.core.domain.services.language.LanguageService
 import kotlinx.coroutines.*
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 
 class TrackingRepositoryImpl(
     private val apiService: KtorApiService,
@@ -112,6 +113,7 @@ class TrackingRepositoryImpl(
         )
     }
 
+    @OptIn(ExperimentalTime::class)
     private fun trackEvent(
         eventName: String,
         eventParams: Map<String, String?> = emptyMap()
@@ -122,7 +124,7 @@ class TrackingRepositoryImpl(
 
             val extraParams = mapOf(
                 "deviceType" to deviceInfoService.getDeviceType(),
-                "operationSystem" to Build.VERSION.RELEASE,
+                "operationSystem" to deviceInfoService.getReleaseVersion(),
                 "appVersion" to BuildConfig.VERSION_NAME,
                 "partnerId" to authResponseService.getStoreId(),
                 "sessionId" to deviceInfoService.getSessionId(),
@@ -142,7 +144,7 @@ class TrackingRepositoryImpl(
 
             val trackingEvent = TrackingEvent(
                 eventName = eventName,
-                timeStamp = System.currentTimeMillis(),
+                timeStamp = Clock.System.now().toEpochMilliseconds(),
                 payload = eventParams + extraParams
             )
 

@@ -25,10 +25,10 @@ import io.ktor.http.ContentType
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
 import io.ktor.http.contentType
+import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
-import java.nio.channels.UnresolvedAddressException
 import kotlin.coroutines.cancellation.CancellationException
 
 class KtorApiService(
@@ -125,7 +125,7 @@ class KtorApiService(
     }
 
     suspend inline fun <reified Response : Any> get(
-        baseUrl: String = BuildConfig.BASE_URL,
+        baseUrl: String = "BuildConfig.BASE_URL",
         route: String,
         queryParameters: Map<String, Any?> = mapOf(),
         headers: Map<String, String> = mapOf(),

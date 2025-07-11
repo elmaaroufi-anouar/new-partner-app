@@ -30,7 +30,7 @@
     <string name="price">Price</string>
     <string name="unselect_products">Unselect products</string>
     <string name="disable">Disable</string>
-    <string name="disable_products_for">Disable Products For:</string>
+    <string name="disable_products">Disable Products</string>
     <string name="how_far_would_you_like_to_disable_the_product">How far would you like to disable the product?</string>
     <string name="how_far_would_you_like_to_disable_the_products">How far would you like to disable the products?</string>
     <string name="cancel">Cancel</string>
@@ -144,5 +144,12 @@
     <string name="couldn_t_load_product">Couldn\'t load product</string>
     <string name="options">Options</string>
     <string name="this_product_has_no_options">This product has no options</string>
-    <string name="unkown">Unknown</string>
+    <string name="unknown">Unknown</string>
+    <string name="disable_battery_optimizations">Disable battery optimizations</string>
+    <string name="_1_hour">1 Hour</string>
+    <string name="_2_hours">2 Hours</string>
+    <string name="_3_hours">3 Hours</string>
+    <string name="_4_hours">4 Hours</string>
+    <string name="_1_day">1 Day</string>
+    <string name="until_i_enable_them">Until I enable them</string>
 </resources>

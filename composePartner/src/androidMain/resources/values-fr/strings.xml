@@ -29,7 +29,7 @@
     <string name="price">Prix</string>
     <string name="unselect_products">Désélectionner les produits</string>
     <string name="disable">Désactiver</string>
-    <string name="disable_products_for">Désactiver les produits pour:</string>
+    <string name="disable_products">Désactiver les produits</string>
     <string name="how_far_would_you_like_to_disable_the_product">Pour combien de temps souhaitez-vous désactiver le produit?</string>
     <string name="how_far_would_you_like_to_disable_the_products">Pour combien de temps souhaitez-vous désactiver les produits?</string>
     <string name="cancel">Annuler</string>
@@ -127,6 +127,7 @@
     <string name="printer">Imprimante</string>
     <string name="sunmi">Sunmi</string>
     <string name="alps_q6">Alps Q6Pro</string>
+    <string name="landi_m20">Landi M20</string>
     <string name="test_printer">Tester l\’imprimante</string>
     <string name="updating_play_services">Mise à jour de Play Services…</string>
     <string name="please_don_t_close_the_app">Veuillez ne pas fermer l\'application,\ncela peut prendre 2 minutes.</string>
@@ -142,4 +143,12 @@
     <string name="couldn_t_load_product">Impossible de charger le produit</string>
     <string name="options">Options</string>
     <string name="this_product_has_no_options">Ce produit n\'a pas d\'options</string>
+    <string name="unknown">Inconnue</string>
+    <string name="disable_battery_optimizations">Désactiver les optimisations de la batterie</string>
+    <string name="_1_hour">1 heure</string>
+    <string name="_2_hours">2 heures</string>
+    <string name="_3_hours">3 heures</string>
+    <string name="_4_hours">4 heures</string>
+    <string name="_1_day">1 jour</string>
+    <string name="until_i_enable_them">Jusqu\'à ce que je les active</string>
 </resources>

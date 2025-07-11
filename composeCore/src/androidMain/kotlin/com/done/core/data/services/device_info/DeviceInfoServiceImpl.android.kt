@@ -43,6 +43,10 @@ actual class DeviceInfoServiceImpl(
         return Build.MODEL
     }
 
+    actual override fun getReleaseVersion(): String {
+        return Build.VERSION.RELEASE
+    }
+
     actual override fun getNetworkType(): String {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

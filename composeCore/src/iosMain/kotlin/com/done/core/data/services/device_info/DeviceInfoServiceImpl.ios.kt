@@ -55,4 +55,8 @@ actual class DeviceInfoServiceImpl : DeviceInfoService {
     actual override fun isFakingLocation(): Boolean {
         TODO("Not yet implemented")
     }
+
+    actual override fun getReleaseVersion(): String {
+        TODO("Not yet implemented")
+    }
 }

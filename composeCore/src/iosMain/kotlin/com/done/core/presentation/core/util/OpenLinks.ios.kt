@@ -1,4 +1,7 @@
 package com.done.core.presentation.core.util
 
-actual fun openFirebaseDistribution(context: Any, url: String) {
+import androidx.compose.runtime.Composable
+
+@Composable
+actual fun openFirebaseDistribution(url: String) {
 }

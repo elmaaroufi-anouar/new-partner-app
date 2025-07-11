@@ -139,7 +139,7 @@ fun OrderListScreenCore(
                 }
 
                 is OrderListAction.OnUpdateVersionClick -> {
-                    openFirebaseDistribution(context, state.updateUrl)
+                    openFirebaseDistribution(state.updateUrl)
                 }
 
                 is OrderListAction.OnAcceptOrder -> { // This is not used in the UI

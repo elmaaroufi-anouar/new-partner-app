@@ -2,10 +2,13 @@ package com.done.core.presentation.core.util
 
 import android.content.Context
 import android.content.Intent
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.core.net.toUri
 
-actual fun openFirebaseDistribution(context: Any, url: String) {
-    val ctx = context as Context
+@Composable
+actual fun openFirebaseDistribution(url: String) {
+    val context = LocalContext.current
     val intent = Intent(Intent.ACTION_VIEW, url.toUri())
-    ctx.startActivity(intent)
+    context.startActivity(intent)
 }

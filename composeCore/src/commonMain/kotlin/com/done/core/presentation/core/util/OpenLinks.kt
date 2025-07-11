@@ -1,4 +1,6 @@
 package com.done.core.presentation.core.util
 
+import androidx.compose.runtime.Composable
 
-expect fun openFirebaseDistribution(context: Any, url: String)
+@Composable
+expect fun openFirebaseDistribution(url: String)

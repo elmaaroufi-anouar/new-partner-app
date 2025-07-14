@@ -1,6 +1,5 @@
 package com.done.partner.presentation.settings
 
-import com.done.partner.R
 import com.done.partner.domain.util.Printer
 import com.done.partner.domain.util.PrinterType
 import com.done.core.domain.models.language.Language
@@ -13,8 +12,8 @@ data class SettingsState(
     val printerType: PrinterType? = Printer.CURRENT_PRINTER_TYPE,
     val languages: List<Language> = listOf(),
     val currentLanguage: Language = Language(
-        nameResource = R.string.french,
+        nameResource = Res.string.french,
         code = LanguageCodes.FR,
-        image = R.drawable.frensh
+        image = Res.drawable.frensh
     )
 )

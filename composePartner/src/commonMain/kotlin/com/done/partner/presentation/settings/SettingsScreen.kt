@@ -27,7 +27,7 @@ import com.done.core.presentation.core.design_system.DoneScaffold
 import com.done.core.presentation.core.design_system.DoneTopBar
 import com.done.core.presentation.core.ui.components.ObserveAsEvent
 import com.done.core.presentation.core.ui.theme.DoneTheme
-import com.done.partner.BuildConfig
+//import com.done.partner.BuildConfig
 import com.done.partner.domain.models.orders.previewOrders
 import com.done.partner.domain.util.Printer
 import com.done.partner.domain.util.PrinterType
@@ -157,7 +157,7 @@ private fun SettingsScreen(
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = "${stringResource(Res.string.version)} ${BuildConfig.VERSION_NAME}",
+                text = "${stringResource(Res.string.version)} '${BuildConfig.VERSION_NAME}'",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.align(Alignment.End)
@@ -209,7 +209,7 @@ fun SettingsSection(
     state: SettingsState,
     onAction: (SettingsActions) -> Unit
 ) {
-    val picture = remember { byteArrayOf() }
+    var picture = remember { byteArrayOf() }
     var isCapturing by remember { mutableStateOf(false) }
     var isPrinterSettingsDialogShown by remember { mutableStateOf(false) }
 

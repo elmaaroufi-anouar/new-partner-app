@@ -784,7 +784,7 @@ fun TotalPrices(
         )
 
         Text(
-            text = formatVat(order.vat),
+            text = formatVat(order.vat ?: 0),
             style = MaterialTheme.typography.bodyMedium.copy(
                 fontWeight = FontWeight.Medium
             ),

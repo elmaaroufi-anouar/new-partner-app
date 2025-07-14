@@ -24,12 +24,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.done.core.domain.models.language.Language
-import com.done.partner.R
 import com.done.partner.presentation.settings.SettingsActions
 import com.done.partner.presentation.settings.SettingsState
 import org.jetbrains.compose.resources.painterResource
@@ -95,7 +92,7 @@ fun LanguageItem(
     ) {
 
         Image(
-            painter = painterResource(language?.image ?: R.drawable.frensh),
+            painter = painterResource(language?.image ?: Res.drawable.frensh),
             contentDescription = null,
             modifier = Modifier
                 .size(27.dp)
@@ -109,7 +106,7 @@ fun LanguageItem(
         }
 
         Text(
-            text = stringResource(language?.nameResource ?: R.string.french),
+            text = stringResource(language?.nameResource ?: Res.string.french),
             fontWeight = FontWeight.Medium
         )
 

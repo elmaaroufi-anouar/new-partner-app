@@ -25,11 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.done.partner.domain.models.orders.Order
 import com.done.partner.domain.models.orders.previewOrders
@@ -38,7 +34,6 @@ import com.done.core.presentation.core.ui.theme.DoneTheme
 import com.done.core.presentation.core.ui.theme.doneGreen
 import com.done.core.presentation.core.ui.theme.doneLighterOrange
 import com.done.core.presentation.core.ui.theme.doneOrange
-import com.done.partner.R
 import com.done.partner.presentation.order_list.OrderListAction
 import com.done.partner.presentation.order_list.OrderListState
 import org.jetbrains.compose.resources.painterResource
@@ -91,7 +86,6 @@ fun PendingOrderItem(
     onAction: (OrderListAction) -> Unit
 ) {
 
-    val context = LocalContext.current
     Column(
         modifier = modifier
             .padding(horizontal = 16.dp)

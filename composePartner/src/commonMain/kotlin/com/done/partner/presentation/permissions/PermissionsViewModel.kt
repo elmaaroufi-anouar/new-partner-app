@@ -14,7 +14,7 @@ class PermissionsViewModel(
     private val permissionsController: AppPermissionsController
 ): ViewModel() {
 
-    val state = mutableStateOf(PermissionState.NotDetermined)
+    var state = mutableStateOf(PermissionState.NotDetermined)
         private set
 
     init {

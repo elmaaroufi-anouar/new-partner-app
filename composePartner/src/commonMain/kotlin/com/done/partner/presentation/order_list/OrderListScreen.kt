@@ -56,7 +56,6 @@ import com.done.partner.presentation.core.components.ScreenShootTicket
 import com.done.partner.presentation.core.components.ToggleStoreAvailabilityButton
 import com.done.partner.presentation.core.components.ToggleStoreAvailabilityDialog
 import com.done.partner.presentation.core.components.UpdatingPlayServicesDialog
-import com.done.partner.presentation.core.components.createBitmapBytesFromPicture
 import com.done.core.presentation.core.util.openFirebaseDistribution
 import com.done.partner.presentation.order_list.components.BeingPreparedOrders
 import com.done.partner.presentation.order_list.components.DeliverdAndCancelledOrders

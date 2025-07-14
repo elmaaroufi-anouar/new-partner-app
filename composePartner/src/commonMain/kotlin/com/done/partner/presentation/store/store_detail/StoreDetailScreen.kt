@@ -1,6 +1,5 @@
 package com.done.partner.presentation.store.store_detail
 
-import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -68,7 +67,7 @@ fun StoreDetailScreenRoot(
     ObserveAsEvent(viewModel.event) { event ->
         when (event) {
             is StoreDetailEvent.Error -> {
-                networkErrorToast(context = context, networkError = event.networkError)
+                networkErrorToast(networkError = event.networkError)
             }
             StoreDetailEvent.OrderUpdated -> {
                 showToast(message = Res.string.order_updated)

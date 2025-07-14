@@ -8,7 +8,7 @@ import com.done.core.domain.repositories.remote_config.RemoteConfigRepository
 import com.done.core.domain.util.result.Result
 import com.done.core.presentation.core.util.UiAction
 import com.done.core.presentation.core.util.toMap
-import com.done.partner.BuildConfig
+//import com.done.partner.BuildConfig
 import com.done.partner.domain.models.orders.status.MarkOrderAsStatus
 import com.done.partner.domain.models.orders.status.OrderStatus
 import com.done.partner.domain.repositories.auth.AuthRepository
@@ -38,7 +38,7 @@ class OrderListViewModel(
 ) : ViewModel() {
 
     private val versionCode: Int
-        get() = BuildConfig.VERSION_CODE
+        get() = 0 // BuildConfig.VERSION_CODE
 
     private val _state = MutableStateFlow(OrderListState())
     val state = _state.asStateFlow()

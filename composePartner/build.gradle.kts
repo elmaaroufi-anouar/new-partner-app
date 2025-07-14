@@ -79,6 +79,9 @@ kotlin {
                 // Landi
                 implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
 
+                // KMP shared modules
+                implementation(projects.composeCore)
+
                 // Permissions
                 implementation(libs.moko.permissions)
                 implementation(libs.moko.permissions.compose)

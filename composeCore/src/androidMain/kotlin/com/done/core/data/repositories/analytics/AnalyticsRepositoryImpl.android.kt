@@ -21,10 +21,10 @@ actual class AnalyticsRepositoryImpl(
 
     @SuppressLint("HardwareIds")
     actual override suspend fun logEvent(eventName: String, params: Map<String, Any>?) {
-        if (BuildConfig.DEBUG) {
-            println("FirebaseAnalytics $eventName $params")
-            return
-        }
+//        if (BuildConfig.DEBUG) {
+//            println("FirebaseAnalytics $eventName $params")
+//            return
+//        }
         val allParams = params?.plus(getOtherParams())
         val bundle: Bundle? = allParams?.run {
             val bundle = Bundle()

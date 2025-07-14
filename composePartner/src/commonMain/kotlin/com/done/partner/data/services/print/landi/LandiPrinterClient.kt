@@ -1,3 +1,7 @@
 package com.done.partner.data.services.print.landi
 
-expect class LandiPrinterClient
+import com.done.partner.domain.services.print.PrinterClient
+
+expect class LandiPrinterClient: PrinterClient {
+    override fun printOrder(ticket: ByteArray, printTwo: Boolean)
+}

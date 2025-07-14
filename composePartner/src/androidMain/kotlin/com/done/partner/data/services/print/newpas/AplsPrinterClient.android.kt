@@ -6,9 +6,10 @@ import com.done.partner.data.services.print.newpas.util.BitMapUtil
 import com.done.partner.data.services.print.newpas.util.BluetoothManager
 import com.done.partner.data.services.print.newpas.util.ESCUtil
 import com.done.partner.data.services.print.newpas.util.ThreadPoolManager
+import com.done.partner.domain.services.print.PrinterClient
 
-actual class AplsPrinterClient {
-    fun printOrder(
+actual class AplsPrinterClient: PrinterClient {
+    actual override fun printOrder(
         ticket: ByteArray, printTwo: Boolean
     ) {
         BluetoothManager.getInstance().bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()

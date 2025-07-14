@@ -42,6 +42,10 @@ kotlin {
 
             // Pushy
             implementation(libs.pushy)
+
+            // KMP shared modules
+            implementation(projects.composeCore)
+            implementation(projects.composePartner)
         }
         commonMain.dependencies {
             // KMP shared modules

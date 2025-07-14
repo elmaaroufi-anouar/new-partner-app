@@ -1,3 +1,7 @@
 package com.done.partner.data.services.print.newpas
 
-expect class AplsPrinterClient
+import com.done.partner.domain.services.print.PrinterClient
+
+expect class AplsPrinterClient: PrinterClient {
+    override fun printOrder(ticket: ByteArray, printTwo: Boolean)
+}

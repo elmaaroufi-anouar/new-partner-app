@@ -41,7 +41,7 @@ fun NoInternetView() {
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = stringResource(com.done.core.Res.string.make_sure_you_have_a_valid_internet_connection),
+            text = stringResource(Res.string.make_sure_you_have_a_valid_internet_connection),
             style = MaterialTheme.typography.titleSmall.copy(
                 fontWeight = FontWeight.Medium
             ),

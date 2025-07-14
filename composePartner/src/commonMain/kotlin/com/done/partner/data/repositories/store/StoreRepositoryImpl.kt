@@ -1,6 +1,6 @@
 package com.done.partner.data.repositories.store
 
-import com.done.core.BuildConfig
+//import com.done.core.BuildConfig
 import com.done.core.data.util.ApiRoutes
 import com.done.partner.data.dto.store.StoreDataDto
 import com.done.partner.data.dto.store.StoreDto
@@ -25,7 +25,7 @@ class StoreRepositoryImpl(
             NetworkError(NetworkErrorName.UNKNOWN)
         )
         val result = apiService.get<StoreDto>(
-            baseUrl = BuildConfig.FOOD_BASE_URL,
+            baseUrl = "BuildConfig.FOOD_BASE_URL",
             route = ApiRoutes.storeById(storeId),
             headers = mapOf(
                 "lat" to location.lat,

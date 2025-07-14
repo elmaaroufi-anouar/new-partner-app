@@ -121,7 +121,7 @@ fun Ticket(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(R.drawable.logo_black),
+            painter = painterResource(Res.drawable.logo_black),
             contentDescription = null,
             contentScale = ContentScale.FillWidth,
             modifier = Modifier
@@ -133,14 +133,14 @@ fun Ticket(
 
         if (!printTwo) {
             Text(
-                localizedContext.getString(R.string.duplicated),
+                localizedContext.getString(Res.string.duplicated),
                 fontSize = fontSize(),
                 fontWeight = FontWeight.Medium
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            localizedContext.getString(R.string.pickup_code),
+            localizedContext.getString(Res.string.pickup_code),
             fontSize = fontSize(),
             fontWeight = fontWeight
         )
@@ -174,7 +174,7 @@ fun Ticket(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                "${localizedContext.getString(R.string.estimated_pickup_time)} ${order.deliveryEstimationInMin.getTimeAfterMinutes()}",
+                "${localizedContext.getString(Res.string.estimated_pickup_time)} ${order.deliveryEstimationInMin.getTimeAfterMinutes()}",
                 textAlign = TextAlign.Center,
                 fontSize = fontSize(4),
                 fontWeight = fontWeight,
@@ -297,7 +297,7 @@ fun Ticket(
                     Spacer(Modifier.width(10.dp))
 
                     Text(
-                        text = localizedContext.getString(R.string.customer_request),
+                        text = localizedContext.getString(Res.string.customer_request),
                         fontSize = fontSize(4),
                         fontStyle = FontStyle.Italic,
                         fontWeight = fontWeight
@@ -320,7 +320,7 @@ fun Ticket(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    localizedContext.getString(R.string.total),
+                    localizedContext.getString(Res.string.total),
                     fontSize = fontSize(13),
                     fontWeight = fontWeight
                 )
@@ -341,7 +341,7 @@ fun Ticket(
             Spacer(modifier = Modifier.height(38.dp))
 
             Text(
-                localizedContext.getString(R.string.made_with_in_morocco),
+                localizedContext.getString(Res.string.made_with_in_morocco),
                 fontSize = fontSize(3),
                 fontWeight = fontWeight,
                 modifier = Modifier.align(Alignment.CenterHorizontally)

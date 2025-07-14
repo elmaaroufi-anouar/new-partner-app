@@ -62,7 +62,7 @@ fun QuantityButton(
                     .weight(0.3f)
             ) {
                 Icon(
-                    painter = painterResource(R.drawable.ic_moins),
+                    painter = painterResource(Res.drawable.ic_moins),
                     contentDescription = null,
                     tint = if (isMinusEnabled){
                         MaterialTheme.colorScheme.onBackground

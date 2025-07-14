@@ -6,6 +6,7 @@ import com.done.core.domain.repositories.crashlytics.CrashlyticsRepository
 import com.done.partner.data.repositories.play_services.PlayServicesRepositoryImpl
 import com.done.partner.data.services.play_services.PlayServicesServiceImpl
 import com.done.partner.data.services.play_services.XapkInstaller
+import com.done.partner.data.services.print.landi.LandiPrinterClient
 import com.done.partner.data.services.print.newpas.AplsPrinterClient
 import com.done.partner.data.services.print.sunmi.SunmiPrinterClient
 import com.done.partner.domain.repositories.play_services.PlayServicesRepository
@@ -30,6 +31,7 @@ actual val platformPartnerDataModule = module {
     // Add other platform-specific dependencies here
     factoryOf(::SunmiPrinterClient)
     factoryOf(::AplsPrinterClient)
+    factoryOf(::LandiPrinterClient)
 
     singleOf(::XapkInstaller)
 }

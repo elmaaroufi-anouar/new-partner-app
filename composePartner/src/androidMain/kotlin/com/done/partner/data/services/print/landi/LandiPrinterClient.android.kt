@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.core.graphics.scale
+import com.done.partner.domain.services.print.PrinterClient
 import com.sdksuite.omnidriver.OmniConnection
 import com.sdksuite.omnidriver.OmniDriver
 import com.sdksuite.omnidriver.aidl.printer.Align
@@ -14,10 +15,10 @@ import java.io.ByteArrayOutputStream
 
 actual class LandiPrinterClient(
     private val context: Context
-) {
+): PrinterClient {
     private var printer: Printer? = null
 
-    fun printOrder(ticket: ByteArray, printTwo: Boolean) {
+    actual override fun printOrder(ticket: ByteArray, printTwo: Boolean) {
         processTicketForPrinting(ticket)?.let { processedTicket ->
             try {
                 OmniDriver.me(context).init(object : OmniConnection {

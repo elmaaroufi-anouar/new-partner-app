@@ -7,7 +7,6 @@ import com.done.core.domain.services.notifications.DeviceTokenRegisteringService
 import com.done.core.domain.services.secure_storage.SecureStorageService
 import com.done.core.domain.models.language.Language
 import com.done.core.domain.models.language.LanguageCodes
-import com.done.partner.R
 import com.done.partner.domain.services.print.PrinterService
 import com.done.partner.domain.repositories.settings.SettingsRepository
 import com.done.partner.domain.util.PrinterType
@@ -64,28 +63,28 @@ class SettingsRepositoryImpl(
         return getAllLanguages().firstOrNull {
             it.code == currentLanguageCode
         } ?: Language(
-            nameResource = R.string.french,
+            nameResource = Res.string.french,
             code = LanguageCodes.FR,
-            image = R.drawable.frensh
+            image = Res.drawable.frensh
         )
     }
 
     override fun getAllLanguages(): List<Language> {
         val languages = listOf(
             Language(
-                nameResource = R.string.english,
+                nameResource = Res.string.english,
                 code = LanguageCodes.EN,
-                image = R.drawable.english
+                image = Res.drawable.english
             ),
             Language(
-                nameResource = R.string.arabic,
+                nameResource = Res.string.arabic,
                 code = LanguageCodes.AR,
-                image = R.drawable.arabic
+                image = Res.drawable.arabic
             ),
             Language(
-                nameResource = R.string.french,
+                nameResource = Res.string.french,
                 code = LanguageCodes.FR,
-                image = R.drawable.frensh
+                image = Res.drawable.frensh
             )
         )
 

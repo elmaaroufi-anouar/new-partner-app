@@ -3,6 +3,7 @@ package com.done.partner.data.services.print.sunmi
 import android.content.Context
 import android.graphics.BitmapFactory
 import androidx.core.graphics.scale
+import com.done.partner.domain.services.print.PrinterClient
 import com.sunmi.printerx.PrinterSdk
 import com.sunmi.printerx.SdkException
 import com.sunmi.printerx.enums.Align
@@ -12,10 +13,10 @@ import com.sunmi.printerx.style.BitmapStyle
 
 actual class SunmiPrinterClient(
     private val context: Context
-) {
+): PrinterClient {
     private var selectPrinter: PrinterSdk.Printer? = null
 
-    fun printOrder(ticket: ByteArray, printTwo: Boolean) {
+    actual override fun printOrder(ticket: ByteArray, printTwo: Boolean) {
         try {
             PrinterSdk.getInstance().getPrinter(context, object : PrinterSdk.PrinterListen {
                 override fun onDefPrinter(printer: PrinterSdk.Printer?) {

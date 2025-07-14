@@ -46,7 +46,7 @@ class KtorApiService(
         return safeCall {
             httpClient.post {
                 if (useDoneBaseUrl) {
-//                    url(BuildConfig.BASE_URL + "/" + route)
+                    url(BuildConfig.BASE_URL + "/" + route)
                 } else {
                     url(route)
                 }
@@ -73,7 +73,7 @@ class KtorApiService(
     ): Result<Response, NetworkError> {
         return safeCall(execute = {
             httpClient.put() {
-//                url(BuildConfig.BASE_URL + "/" + route)
+                url(BuildConfig.BASE_URL + "/" + route)
 
                 queryParameters.forEach { (key, value) ->
                     parameter(key, value)
@@ -100,7 +100,7 @@ class KtorApiService(
         return safeCall {
             httpClient.post {
 
-//                url(BuildConfig.BASE_URL + "/" + route)
+                url(BuildConfig.BASE_URL + "/" + route)
 
                 setBody(
                     MultiPartFormDataContent(
@@ -158,7 +158,7 @@ class KtorApiService(
     ): Result<Response, NetworkError> {
         return safeCall {
             httpClient.patch {
-//                url(BuildConfig.BASE_URL + "/" + route)
+                url(BuildConfig.BASE_URL + "/" + route)
 
                 setBody(body)
 

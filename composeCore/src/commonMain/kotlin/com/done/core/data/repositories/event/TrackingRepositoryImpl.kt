@@ -125,7 +125,7 @@ class TrackingRepositoryImpl(
             val extraParams = mapOf(
                 "deviceType" to deviceInfoService.getDeviceType(),
                 "operationSystem" to deviceInfoService.getReleaseVersion(),
-//                "appVersion" to BuildConfig.VERSION_NAME,
+                "appVersion" to BuildConfig.VERSION_NAME,
                 "partnerId" to authResponseService.getStoreId(),
                 "sessionId" to deviceInfoService.getSessionId(),
                 "ipAddress" to ipInfo.await()?.ipAddress,
@@ -149,11 +149,11 @@ class TrackingRepositoryImpl(
             )
 
             println("TrackingEvent: $trackingEvent")
-//            apiService.post<Unit>(
-//                route = "${BuildConfig.EVENTS_BASE_URL}/${ApiRoutes.TRACK_EVENT}",
-//                body = trackingEvent.toTrackingEventDto(),
-//                useDoneBaseUrl = false
-//            )
+            apiService.post<Unit>(
+                route = "${BuildConfig.EVENTS_BASE_URL}/${ApiRoutes.TRACK_EVENT}",
+                body = trackingEvent.toTrackingEventDto(),
+                useDoneBaseUrl = false
+            )
         }
     }
 

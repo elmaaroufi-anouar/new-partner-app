@@ -75,18 +75,17 @@ actual class DeviceInfoServiceImpl(
     }
 
     actual override fun getAppInstallSource(): String? {
-//        return try {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//                val info = context.packageManager.getInstallSourceInfo(BuildConfig.APPLICATION_ID)
-//                info.installingPackageName
-//            } else {
-//                context.packageManager.getInstallerPackageName(BuildConfig.APPLICATION_ID)
-//            }
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//            null
-//        }
-        return null
+        return try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                val info = context.packageManager.getInstallSourceInfo(BuildConfig.APPLICATION_ID)
+                info.installingPackageName
+            } else {
+                context.packageManager.getInstallerPackageName(BuildConfig.APPLICATION_ID)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
     }
 
     private var sessionId = ""
@@ -105,7 +104,7 @@ actual class DeviceInfoServiceImpl(
                 route = "json/"
             )
             return when (result) {
-                is com.done.core.domain.util.result.Result.Error<*> -> null
+                is Result.Error<*> -> null
                 is Result.Success<*> -> result.data?.toIpInfo()
             }
         }

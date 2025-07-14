@@ -25,7 +25,7 @@ class StoreRepositoryImpl(
             NetworkError(NetworkErrorName.UNKNOWN)
         )
         val result = apiService.get<StoreDto>(
-            baseUrl = "BuildConfig.FOOD_BASE_URL",
+            baseUrl = BuildConfig.FOOD_BASE_URL,
             route = ApiRoutes.storeById(storeId),
             headers = mapOf(
                 "lat" to location.lat,
